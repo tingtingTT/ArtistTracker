@@ -1,0 +1,16 @@
+<resources>
+    <string name="app_name">ArtistTracker</string>
+    <string name="API_KEY">44ce572665909f50a88232d35e667812</string> <!-- used for specific commands requiring api auth -->
+    <string name="action_settings">Settings</string>
+    <string name="concert">Concert</string>
+    <string name="album">Album</string>
+    <string name="saved_artist">Saved artist</string>
+    <string name="search_artist_hint">Search artists</string>
+    <string name="saved_artist_confirm">Search this artist</string>
+    <string name="dummy_text_1">Upcoming albums</string>
+    <string name="dummy_text_2">Upcoming concerts</string>
+    <string name="dummy_text_3">All info for this artist</string>
+    <string name="save">Save</string>
+    <string name="delete">Delete</string>
+    <string name='backgroud'>Mian backgroud image</string>
+</resources>
