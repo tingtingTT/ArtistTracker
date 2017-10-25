@@ -25,6 +25,8 @@ import android.view.View;
 import android.widget.Button;
 import android.support.design.widget.FloatingActionButton;
 import android.widget.ImageView;
+//import static com.mike.artisttracker.R.string.API_KEY;
+
 
 // IMPORTS ALL OF THE LASTFM WRAPPER API
 // TODO: modify this to only import necessary parts
