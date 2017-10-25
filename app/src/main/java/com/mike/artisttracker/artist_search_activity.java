@@ -28,7 +28,7 @@ public class artist_search_activity extends AppCompatActivity implements SearchV
 
     public Button confirm_search_single_artist_button;
     public SearchView searchViewArtists;
-    public ArrayList<Collection<Artist>> results = new ArrayList<Collection<Artist>>();
+    public ArrayList<String> results = new ArrayList<String>();
 
 
 
@@ -84,10 +84,15 @@ public class artist_search_activity extends AppCompatActivity implements SearchV
     @Override
     public boolean onQueryTextSubmit(String query) {
         if(query.length() != 0){
-            results.add(getSearchResults(query)); //problem
-            System.out.println(getSearchResults(query).toString());
+            Collection<Artist> tempresults = new ArrayList<Artist>();
+            tempresults = getSearchResults(query);
+            for (Artist artists : tempresults) {
+                results.add(artists.getName());
+            }
+
+            System.out.println(tempresults.toString());
             ListView lv = (ListView) findViewById(R.id.search_results);
-            ArrayAdapter<Collection<Artist>> adapter = new ArrayAdapter<Collection<Artist>>(this,R.layout.searchresults,results);
+            ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,R.layout.searchresults,results);
             lv.setAdapter(adapter);
             return true;
         }
