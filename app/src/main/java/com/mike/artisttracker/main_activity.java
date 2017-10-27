@@ -16,6 +16,7 @@
 
 package com.mike.artisttracker;
 
+import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
@@ -38,6 +39,7 @@ public class main_activity extends AppCompatActivity implements View.OnClickList
     public Button album_button;
     public Button saved_artist_button;
     public FloatingActionButton search_artist_float_button;
+    public Context context = getApplicationContext(); // to be used for file save /update
 
 
     public void init_layout()
