@@ -107,7 +107,7 @@ public class saved_artist implements Serializable{
     public void saveDataToText(Context context){
         try {
             FileOutputStream os = context.openFileOutput("SavedArtist.txt", MODE_PRIVATE);
-            ObjectOutputStream output = new ObjectOutputStream(os);-a
+            ObjectOutputStream output = new ObjectOutputStream(os);
             output.writeObject(savedArtists);
             output.close();
         }
