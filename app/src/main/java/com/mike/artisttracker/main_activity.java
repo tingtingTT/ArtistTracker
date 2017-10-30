@@ -39,7 +39,7 @@ public class main_activity extends AppCompatActivity implements View.OnClickList
     public Button album_button;
     public Button saved_artist_button;
     public FloatingActionButton search_artist_float_button;
-    public Context context = getApplicationContext(); // to be used for file save /update
+//    public Context context = getApplicationContext(); // to be used for file save /update
 
 
     public void init_layout()
