@@ -11,13 +11,13 @@ import android.support.v8.renderscript.*;
 
 public class blur_bitmap {
 
-    public static Bitmap blur_image(Context context, Bitmap inputBitmap)
+    public static Bitmap blur_image(Context context, Bitmap input_bitmap)
     {
 
         try{
             RenderScript rs = RenderScript.create(context);
 
-            Bitmap blurred_bitmap = inputBitmap.copy(Bitmap.Config.ARGB_8888, true);
+            Bitmap blurred_bitmap = input_bitmap.copy(Bitmap.Config.ARGB_8888, true);
 
             // allocate memory
             Allocation input = Allocation.createFromBitmap(rs, blurred_bitmap, Allocation.MipmapControl.MIPMAP_FULL, Allocation.USAGE_SHARED);
@@ -32,7 +32,7 @@ public class blur_bitmap {
 
             output.copyTo(blurred_bitmap);
 
-            inputBitmap.recycle();
+            input_bitmap.recycle();
 
             return blurred_bitmap;
         }
