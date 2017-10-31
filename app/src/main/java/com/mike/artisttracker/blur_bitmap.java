@@ -9,18 +9,18 @@ import android.content.Context;
 import android.graphics.Bitmap;
 import android.support.v8.renderscript.*;
 
-public class BlurBitmap {
+public class blur_bitmap {
 
-    public static Bitmap blurImage(Context context, Bitmap inputBitmap)
+    public static Bitmap blur_image(Context context, Bitmap inputBitmap)
     {
 
         try{
             RenderScript rs = RenderScript.create(context);
 
-            Bitmap blurredBitmap = inputBitmap.copy(Bitmap.Config.ARGB_8888, true);
+            Bitmap blurred_bitmap = inputBitmap.copy(Bitmap.Config.ARGB_8888, true);
 
             // allocate memory
-            Allocation input = Allocation.createFromBitmap(rs, blurredBitmap, Allocation.MipmapControl.MIPMAP_FULL, Allocation.USAGE_SHARED);
+            Allocation input = Allocation.createFromBitmap(rs, blurred_bitmap, Allocation.MipmapControl.MIPMAP_FULL, Allocation.USAGE_SHARED);
             Allocation output = Allocation.createTyped(rs, input.getType());
 
             // blur image
@@ -30,11 +30,11 @@ public class BlurBitmap {
             script.setInput(input);
             script.forEach(output);
 
-            output.copyTo(blurredBitmap);
+            output.copyTo(blurred_bitmap);
 
             inputBitmap.recycle();
 
-            return blurredBitmap;
+            return blurred_bitmap;
         }
        catch(Exception e)
         {
