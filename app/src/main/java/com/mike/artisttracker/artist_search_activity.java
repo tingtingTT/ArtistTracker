@@ -1,5 +1,6 @@
 package com.mike.artisttracker;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.net.wifi.p2p.WifiP2pManager;
 import android.os.StrictMode;
@@ -8,11 +9,13 @@ import android.os.Bundle;
 
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.SearchView;
 import android.widget.SearchView.OnQueryTextListener;
+import android.widget.Toast;
 
 
 import java.util.ArrayList;
@@ -21,16 +24,16 @@ import java.util.Collection;
 import de.umass.lastfm.Artist;
 
 import static com.mike.artisttracker.R.string.API_KEY;
+import static com.mike.artisttracker.R.string.search_artist_hint;
 import static de.umass.lastfm.Artist.search;
 
 
-public class artist_search_activity extends AppCompatActivity implements SearchView.OnQueryTextListener {
+public class artist_search_activity extends AppCompatActivity implements SearchView.OnQueryTextListener{
 
     public Button confirm_search_single_artist_button;
     public SearchView searchViewArtists;
     public ArrayList<String> results = new ArrayList<String>();
-
-
+    public static ArrayList<Artist> artist_list;
 
 
     public void init_layout()
@@ -69,9 +72,24 @@ public class artist_search_activity extends AppCompatActivity implements SearchV
         searchViewArtists = (SearchView) findViewById(R.id.search_view);
         searchViewArtists.setQueryHint("Search artist");
         searchViewArtists.setOnQueryTextListener(this);
-        //ListView lv = (ListView) findViewById(R.id.search_results);
-        //ArrayAdapter<Collection<Artist>> adapter = new ArrayAdapter<Collection<Artist>>(this,R.layout.searchresults,results);
-        //lv.setAdapter(adapter);
+
+        final ListView lv = (ListView)findViewById(R.id.search_results);
+        artist_list = new ArrayList<Artist>();
+        ArrayAdapter<Artist> arrayAdapter =
+                new ArrayAdapter<Artist>(this,android.R.layout.simple_list_item_1, artist_list);
+        lv.setAdapter(arrayAdapter);
+
+        lv.setOnItemClickListener(new AdapterView.OnItemClickListener()
+        {
+            // argument position gives the index of item which is clicked
+            public void onItemClick(AdapterView<?> arg0, View v, int position, long arg3)
+            {
+                Artist selected_artist= artist_list.get(position);
+
+                // a toast for debugging purpose
+                Toast.makeText(getApplicationContext(), "Entry selected : "+selected_artist, Toast.LENGTH_SHORT).show();
+            }
+        });
 
 
     }
@@ -96,6 +114,9 @@ public class artist_search_activity extends AppCompatActivity implements SearchV
             lv.setAdapter(adapter);
             return true;
         }
+
+
+
         return false;
     }
 
@@ -104,4 +125,9 @@ public class artist_search_activity extends AppCompatActivity implements SearchV
         //searchViewArtists.setQuery(s,false);
         return false;
     }
+
+
+
+
+
 }
