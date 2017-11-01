@@ -94,10 +94,8 @@ public class artist_search_activity extends AppCompatActivity implements SearchV
                 @Override
                 public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                     Toast.makeText(getBaseContext(), url_result.get(position), Toast.LENGTH_SHORT).show();
-//                    saved_artist saved_artist = new saved_artist(name_result.get(position), url_result.get(position), mbid_result.get(position));
-                    saved_artist sr = new saved_artist("1", "2", "3");
-
-                    savedArtists.add(sr);
+                    saved_artist saved_artist = new saved_artist(name_result.get(position), url_result.get(position), mbid_result.get(position));
+                    savedArtists.add(saved_artist);
                 }
             });
             return true;
