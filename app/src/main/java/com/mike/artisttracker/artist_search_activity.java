@@ -1,5 +1,7 @@
 package com.mike.artisttracker;
 
+import android.app.Activity;
+import android.content.Intent;
 import android.os.StrictMode;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -96,6 +98,7 @@ public class artist_search_activity extends AppCompatActivity implements SearchV
                     Toast.makeText(getBaseContext(), name_result.get(position), Toast.LENGTH_SHORT).show();
                     saved_artist saved_artist = new saved_artist(name_result.get(position), url_result.get(position), mbid_result.get(position));
                     savedArtists.add(saved_artist);
+                    transferArtist(saved_artist);
                 }
             });
             return true;
@@ -110,6 +113,20 @@ public class artist_search_activity extends AppCompatActivity implements SearchV
     }
 
 
+    // Transfers an artist object to individual_artist_activity
+    // using intent and serializable
+    public void transferArtist(saved_artist a) {
+        // temp artist used as example
+
+        Intent i = new Intent(artist_search_activity.this, individual_artist_activity.class);
+        Bundle b = new Bundle();
+
+        // Puts the saved artist "a" into the bundle using the key "savedKey"
+        b.putSerializable("savedKey", a);
+        i.putExtras(b);
+
+        startActivity(i);
+    }
 
 
 

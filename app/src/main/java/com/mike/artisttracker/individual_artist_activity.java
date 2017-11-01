@@ -19,19 +19,24 @@ public class individual_artist_activity extends AppCompatActivity {
         concert_info = (TextView) findViewById(R.id.concert_info);
         album_info = (TextView) findViewById(R.id.album_info);
 
+        saved_artist sa = get_artist();
+
         // call setText Before setContentView ?
-        artist_name.setText("");
-        artist_info.setText("");
-        concert_info.setText("");
+        artist_name.setText(sa.getArtistName());
+        artist_info.setText(sa.getArtistURL());
+        concert_info.setText(sa.getArtistMBID());
         album_info.setText("");
 
     }
 
     // Gets artist object from bundle
     // Needs previous activity to pass bundle through intent
-    // https://stackoverflow.com/questions/2906925/how-do-i-pass-an-object-from-one-activity-to-another-on-android
-    public void get_artist() {
-        //need artist object
+    public saved_artist get_artist() {
+        Bundle b = this.getIntent().getExtras();
+        saved_artist a = new saved_artist("", "","");
+        if (b != null)
+        a = (saved_artist)getIntent().getExtras().getSerializable("savedKey");
+        return a;
     }
 
     public void parse_concert_data() {
