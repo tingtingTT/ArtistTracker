@@ -1,36 +1,34 @@
 package com.mike.artisttracker;
 
+import android.app.Activity;
 import android.content.Intent;
-import android.net.wifi.p2p.WifiP2pManager;
 import android.os.StrictMode;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-
-import android.support.v7.widget.RecyclerView;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.SearchView;
-import android.widget.SearchView.OnQueryTextListener;
-
-
+import android.widget.Toast;
 import java.util.ArrayList;
 import java.util.Collection;
-
 import de.umass.lastfm.Artist;
 
-import static com.mike.artisttracker.R.string.API_KEY;
+import static com.mike.artisttracker.saved_artist.savedArtists;
 import static de.umass.lastfm.Artist.search;
 
 
-public class artist_search_activity extends AppCompatActivity implements SearchView.OnQueryTextListener {
+public class artist_search_activity extends AppCompatActivity implements SearchView.OnQueryTextListener{
 
     public Button confirm_search_single_artist_button;
-    public SearchView searchViewArtists;
-    public ArrayList<String> results = new ArrayList<String>();
-
-
+    public SearchView search_view_artists;
+    public static ArrayList<String> name_result = new ArrayList<>();
+    public static ArrayList<String> url_result = new ArrayList<>();
+    public static ArrayList<String> mbid_result = new ArrayList<>();
+    public static ArrayList<String> album_result = new ArrayList<>();
+    public static ArrayList<String> event_result = new ArrayList<>();
 
 
     public void init_layout()
@@ -66,14 +64,9 @@ public class artist_search_activity extends AppCompatActivity implements SearchV
 
         StrictMode.setThreadPolicy(policy);
 
-        searchViewArtists = (SearchView) findViewById(R.id.search_view);
-        searchViewArtists.setQueryHint("Search artist");
-        searchViewArtists.setOnQueryTextListener(this);
-        //ListView lv = (ListView) findViewById(R.id.search_results);
-        //ArrayAdapter<Collection<Artist>> adapter = new ArrayAdapter<Collection<Artist>>(this,R.layout.searchresults,results);
-        //lv.setAdapter(adapter);
-
-
+        search_view_artists = (SearchView) findViewById(R.id.search_view);
+        search_view_artists.setQueryHint("Search artist");
+        search_view_artists.setOnQueryTextListener(this);
     }
 
 
@@ -84,16 +77,30 @@ public class artist_search_activity extends AppCompatActivity implements SearchV
     @Override
     public boolean onQueryTextSubmit(String query) {
         if(query.length() != 0){
-            Collection<Artist> tempresults = new ArrayList<Artist>();
-            tempresults = getSearchResults(query);
-            for (Artist artists : tempresults) {
-                results.add(artists.getName());
+            Collection<Artist> result_artist_list = new ArrayList<>();
+            result_artist_list = getSearchResults(query);
+            for (Artist artists : result_artist_list) {
+                name_result.add(artists.getName());
+                url_result.add(artists.getUrl());
+                mbid_result.add(artists.getMbid());
+                // TODO: make API call to get album and concert info of the artist
             }
 
-            System.out.println(tempresults.toString());
-            ListView lv = (ListView) findViewById(R.id.search_results);
-            ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,R.layout.searchresults,results);
+//            System.out.println(result_artist_list.toString());
+            final ListView lv = (ListView) findViewById(R.id.search_results);
+            ArrayAdapter<String> adapter = new ArrayAdapter<>(this,R.layout.searchresults,name_result);
             lv.setAdapter(adapter);
+            lv.setClickable(true);
+            // set on click for list view and save entry as a save_artist object
+            lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                @Override
+                public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                    Toast.makeText(getBaseContext(), name_result.get(position), Toast.LENGTH_SHORT).show();
+                    saved_artist saved_artist = new saved_artist(name_result.get(position), url_result.get(position), mbid_result.get(position));
+                    savedArtists.add(saved_artist);
+                    transferArtist(saved_artist);
+                }
+            });
             return true;
         }
         return false;
@@ -101,7 +108,26 @@ public class artist_search_activity extends AppCompatActivity implements SearchV
 
     @Override
     public boolean onQueryTextChange(String s) {
-        //searchViewArtists.setQuery(s,false);
+        //search_view_artists.setQuery(s,false);
         return false;
     }
+
+
+    // Transfers an artist object to individual_artist_activity
+    // using intent and serializable
+    public void transferArtist(saved_artist a) {
+        // temp artist used as example
+
+        Intent i = new Intent(artist_search_activity.this, individual_artist_activity.class);
+        Bundle b = new Bundle();
+
+        // Puts the saved artist "a" into the bundle using the key "savedKey"
+        b.putSerializable("savedKey", a);
+        i.putExtras(b);
+
+        startActivity(i);
+    }
+
+
+
 }

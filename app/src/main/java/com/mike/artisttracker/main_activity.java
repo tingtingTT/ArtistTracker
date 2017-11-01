@@ -16,7 +16,6 @@
 
 package com.mike.artisttracker;
 
-import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
@@ -66,7 +65,7 @@ public class main_activity extends AppCompatActivity implements View.OnClickList
         setContentView(R.layout.main);
         // set background blur
         ImageView background = (ImageView)findViewById(R.id.backgroud_image_view);
-        Bitmap backgroundBmp = BlurBitmap.blurImage(this, BitmapFactory.decodeResource(getResources(), R.drawable.main_background));
+        Bitmap backgroundBmp = blur_bitmap.blur_image(this, BitmapFactory.decodeResource(getResources(), R.drawable.main_background));
         background.setImageBitmap(backgroundBmp);
 
         init_layout();
