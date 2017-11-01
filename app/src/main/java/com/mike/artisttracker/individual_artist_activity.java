@@ -23,7 +23,7 @@ public class individual_artist_activity extends AppCompatActivity {
 
         // call setText Before setContentView ?
         artist_name.setText(sa.getArtistName());
-        artist_info.setText(sa.getArtistURL());
+        artist_info.setText(sa.getArtistInfo());
         concert_info.setText(sa.getArtistMBID());
         album_info.setText("");
 
@@ -33,7 +33,7 @@ public class individual_artist_activity extends AppCompatActivity {
     // Needs previous activity to pass bundle through intent
     public saved_artist get_artist() {
         Bundle b = this.getIntent().getExtras();
-        saved_artist a = new saved_artist("", "","");
+        saved_artist a = new saved_artist("", "");
         if (b != null)
         a = (saved_artist)getIntent().getExtras().getSerializable("savedKey");
         return a;

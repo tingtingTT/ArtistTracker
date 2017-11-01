@@ -35,14 +35,14 @@ public class saved_artist implements Serializable{
     private String artist_name;
     private String artist_url;
     private String artist_mbid;
+    private String artist_info;
     private PaginatedResult<Event> artist_events; //Concerts
     private PaginatedResult<Image> artist_image;
     private Collection<Album> top_albums; //for info
     private Album upcomingAlbum;
 
-    public saved_artist(String name, String url, String mbid){
+    public saved_artist(String name, String mbid){
         artist_name = name;
-        artist_url = url;
         artist_mbid = mbid;
         //top_albums = updateArtistTopAlbums(name); // API CALL
         //artist_events = updateArtistEvents(mbid); // API CALL
@@ -60,9 +60,14 @@ public class saved_artist implements Serializable{
         artist_mbid = mbid;
     }
 
+    public void setArtistInfo(String info){
+        artist_info = info;
+    }
+
     public String getArtistName() { return artist_name; }
     public String getArtistURL() { return artist_url; }
-    public String getArtistMBID() { return artist_mbid;}
+    public String getArtistMBID() { return artist_mbid; }
+    public String getArtistInfo() { return artist_info; }
     public Collection<Album> getArtistTopAlbums(){ return top_albums; }
     public PaginatedResult<Event> getArtistsEvents(){ return artist_events; }
 

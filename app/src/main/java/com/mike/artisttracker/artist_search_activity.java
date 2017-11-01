@@ -27,6 +27,7 @@ public class artist_search_activity extends AppCompatActivity implements SearchV
     public static ArrayList<String> name_result = new ArrayList<>();
     public static ArrayList<String> url_result = new ArrayList<>();
     public static ArrayList<String> mbid_result = new ArrayList<>();
+    public static ArrayList<String> info_result = new ArrayList<>();
     public static ArrayList<String> album_result = new ArrayList<>();
     public static ArrayList<String> event_result = new ArrayList<>();
 
@@ -79,14 +80,16 @@ public class artist_search_activity extends AppCompatActivity implements SearchV
         if(query.length() != 0){
             Collection<Artist> result_artist_list = new ArrayList<>();
             result_artist_list = getSearchResults(query);
+            name_result.clear();
             for (Artist artists : result_artist_list) {
                 name_result.add(artists.getName());
                 url_result.add(artists.getUrl());
                 mbid_result.add(artists.getMbid());
+                info_result.add(artists.getWikiText());
                 // TODO: make API call to get album and concert info of the artist
             }
 
-//            System.out.println(result_artist_list.toString());
+            System.out.println(result_artist_list.toString());
             final ListView lv = (ListView) findViewById(R.id.search_results);
             ArrayAdapter<String> adapter = new ArrayAdapter<>(this,R.layout.searchresults,name_result);
             lv.setAdapter(adapter);
@@ -96,8 +99,9 @@ public class artist_search_activity extends AppCompatActivity implements SearchV
                 @Override
                 public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                     Toast.makeText(getBaseContext(), name_result.get(position), Toast.LENGTH_SHORT).show();
-                    saved_artist saved_artist = new saved_artist(name_result.get(position), url_result.get(position), mbid_result.get(position));
-                    savedArtists.add(saved_artist);
+                    saved_artist saved_artist = new saved_artist(name_result.get(position), mbid_result.get(position));
+                    saved_artist.setArtistURL(url_result.get(position));
+                    saved_artist.setArtistInfo(info_result.get(position));
                     transferArtist(saved_artist);
                 }
             });
