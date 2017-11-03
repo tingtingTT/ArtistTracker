@@ -2,6 +2,9 @@ package com.mike.artisttracker;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
+import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 
 
@@ -11,6 +14,8 @@ public class individual_artist_activity extends AppCompatActivity {
     public TextView artist_info;
     public TextView concert_info;
     public TextView album_info;
+
+
 
     public void init_layout() {
 
@@ -49,6 +54,25 @@ public class individual_artist_activity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.individual_artist);
 
+
+        Button add_button = (Button)findViewById(R.id.add);
+        Button delete_button = (Button)findViewById(R.id.delete);
+        int isAdd = getIntent().getIntExtra("add", 0);
+        // if add value is 1, show add button, hide delete button
+        if (isAdd == 1)
+        {
+            add_button.setVisibility(View.VISIBLE);
+            delete_button.setVisibility(View.GONE);
+            Log.d("add", "Using add button");
+
+        }
+        // otherwise hide add button, show delete button
+        else
+        {
+            delete_button.setVisibility(View.VISIBLE);
+            add_button.setVisibility(View.GONE);
+            Log.d("add", "Using delete button");
+        }
         // call before setContentView?
         get_artist();
         parse_concert_data();

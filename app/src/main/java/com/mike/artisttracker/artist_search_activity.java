@@ -124,10 +124,12 @@ public class artist_search_activity extends AppCompatActivity implements SearchV
 
         Intent i = new Intent(artist_search_activity.this, individual_artist_activity.class);
         Bundle b = new Bundle();
+        int add = 1;
 
         // Puts the saved artist "a" into the bundle using the key "savedKey"
         b.putSerializable("savedKey", a);
         i.putExtras(b);
+        i.putExtra("add", add);
 
         startActivity(i);
     }
