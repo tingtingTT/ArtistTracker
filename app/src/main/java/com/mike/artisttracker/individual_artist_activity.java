@@ -1,10 +1,14 @@
 package com.mike.artisttracker;
 
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -23,6 +27,11 @@ public class individual_artist_activity extends AppCompatActivity {
 
 
     public void init_layout() {
+
+        // blur image
+        ImageView background = (ImageView)findViewById(R.id.individual_artist);
+        Bitmap background_bmp = blur_bitmap.blur_image(this, BitmapFactory.decodeResource(getResources(), R.drawable.artist));
+        background.setImageBitmap(background_bmp);
 
         artist_name = (TextView) findViewById(R.id.artist_name);
         artist_info = (TextView) findViewById(R.id.artist_info);

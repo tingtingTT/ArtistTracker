@@ -14,8 +14,8 @@ public class concert_activity extends AppCompatActivity {
         setContentView(R.layout.concert);
         // set background blur
         ImageView background = (ImageView)findViewById(R.id.concert_background);
-        Bitmap backgroundBmp = blur_bitmap.blur_image(this, BitmapFactory.decodeResource(getResources(), R.drawable.concert));
-        background.setImageBitmap(backgroundBmp);
+        Bitmap background_bmp = blur_bitmap.blur_image(this, BitmapFactory.decodeResource(getResources(), R.drawable.concert));
+        background.setImageBitmap(background_bmp);
 
     }
 }

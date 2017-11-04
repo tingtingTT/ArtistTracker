@@ -25,7 +25,7 @@ public class blur_bitmap {
 
             // blur image
             ScriptIntrinsicBlur script = ScriptIntrinsicBlur.create(rs, Element.U8_4(rs));
-            script.setRadius(15.f);
+            script.setRadius(25.f);
 
             script.setInput(input);
             script.forEach(output);

@@ -14,9 +14,9 @@ public class artist_list_activity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.artist_list);
         // Get the reference of entries
-        ListView entryList=(ListView)findViewById(R.id.saved_artist_list_view);
+        ListView entry_list=(ListView)findViewById(R.id.saved_artist_list_view);
         ImageView background = (ImageView)findViewById(R.id.artist_background);
-        Bitmap backgroundBmp = blur_bitmap.blur_image(this, BitmapFactory.decodeResource(getResources(), R.drawable.list));
-        background.setImageBitmap(backgroundBmp);
+        Bitmap background_bmp = blur_bitmap.blur_image(this, BitmapFactory.decodeResource(getResources(), R.drawable.list));
+        background.setImageBitmap(background_bmp);
     }
 }
