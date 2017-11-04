@@ -76,6 +76,15 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:scaleType="centerCrop"
+        app:layout_constraintBottom_toBottomOf="@+id/add"
+        app:layout_constraintStart_toStartOf="@+id/artist_name"
+        app:srcCompat="@drawable/artist" />
+
 </android.support.constraint.ConstraintLayout>
 
 

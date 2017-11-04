@@ -29,6 +29,6 @@
         android:layout_height="wrap_content"
         android:scaleType="centerCrop"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/artist"
+        app:srcCompat="@drawable/list"
         tools:layout_editor_absoluteX="0dp" />
 </android.support.constraint.ConstraintLayout>
