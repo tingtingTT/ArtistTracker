@@ -60,8 +60,8 @@ public class individual_artist_activity extends AppCompatActivity {
         setContentView(R.layout.individual_artist);
         sa = get_artist();
 
-        Button add_button = (Button)findViewById(R.id.add);
-        Button delete_button = (Button)findViewById(R.id.delete);
+        final Button add_button = (Button)findViewById(R.id.add);
+        final Button delete_button = (Button)findViewById(R.id.delete);
         int isAdd = getIntent().getIntExtra("add", 0);
 
         // set buttons visibility
@@ -96,6 +96,8 @@ public class individual_artist_activity extends AppCompatActivity {
                 // add to list
                 savedArtists.add(sa);
                 Toast.makeText(getBaseContext(), "added", Toast.LENGTH_SHORT).show();
+                // hide the add button once user clicks it
+                add_button.setVisibility(View.GONE);
             }
         });
 
@@ -106,6 +108,7 @@ public class individual_artist_activity extends AppCompatActivity {
                 // add to list
                 savedArtists.remove(sa);
                 Toast.makeText(getBaseContext(), "deleted", Toast.LENGTH_SHORT).show();
+                delete_button.setVisibility(View.GONE);
             }
         });
 

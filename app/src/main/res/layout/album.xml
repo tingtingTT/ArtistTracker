@@ -4,20 +4,15 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.mike.artisttracker.album_activity">
-
-    <EditText
-        android:id="@+id/dummy_text_1"
-        android:layout_width="wrap_content"
+    tools:context="com.mike.artisttracker.album_activity"
+    tools:layout_editor_absoluteY="81dp">
+    <ImageView
+        android:id="@+id/album_background"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:text="@string/dummy_text_1"
-        tools:layout_constraintTop_creator="1"
-        android:layout_marginStart="83dp"
-        android:layout_marginTop="94dp"
-        tools:layout_constraintLeft_creator="1"
-        app:layout_constraintLeft_toLeftOf="parent"
+        android:scaleType="centerCrop"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginLeft="83dp" />
+        app:srcCompat="@drawable/album" />
 </android.support.constraint.ConstraintLayout>

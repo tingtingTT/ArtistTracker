@@ -14,4 +14,5 @@
     <string name="delete">Delete</string>
     <string name="background">Mian background image</string>
     <string name="add">Add</string>
+    <string name="search_hint">Search artist:\u0020</string>
 </resources>
