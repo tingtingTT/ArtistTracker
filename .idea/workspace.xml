@@ -19,11 +19,7 @@
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/4.1/taskHistory/taskHistory.bin" afterPath="$PROJECT_DIR$/.gradle/4.1/taskHistory/taskHistory.bin" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/4.1/taskHistory/taskHistory.lock" afterPath="$PROJECT_DIR$/.gradle/4.1/taskHistory/taskHistory.lock" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/mike/artisttracker/artist_search_activity.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/mike/artisttracker/artist_search_activity.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/mike/artisttracker/individual_artist_activity.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/mike/artisttracker/individual_artist_activity.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout/individual_artist.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/individual_artist.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout/main.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/main.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" afterPath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" />
     </list>
     <ignored path="CMPS121ArtistTracker.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -58,8 +54,8 @@
       <file leaf-file-name="artist_search_activity.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/mike/artisttracker/artist_search_activity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="288">
-              <caret line="129" column="41" lean-forward="false" selection-start-line="129" selection-start-column="41" selection-end-line="129" selection-end-column="41" />
+            <state relative-caret-position="356">
+              <caret line="100" column="65" lean-forward="false" selection-start-line="100" selection-start-column="0" selection-end-line="101" selection-end-column="0" />
               <folding>
                 <element signature="e#3714#4336#0" expanded="true" />
                 <element signature="e#4335#4336#0" expanded="true" />
@@ -71,9 +67,14 @@
       <file leaf-file-name="individual_artist_activity.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/mike/artisttracker/individual_artist_activity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="390">
-              <caret line="76" column="21" lean-forward="true" selection-start-line="76" selection-start-column="21" selection-end-line="76" selection-end-column="21" />
-              <folding />
+            <state relative-caret-position="288">
+              <caret line="78" column="9" lean-forward="true" selection-start-line="78" selection-start-column="9" selection-end-line="78" selection-end-column="9" />
+              <folding>
+                <element signature="e#2765#3036#0" expanded="true" />
+                <element signature="e#3035#3036#0" expanded="true" />
+                <element signature="e#3112#3388#0" expanded="true" />
+                <element signature="e#3387#3388#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -84,6 +85,19 @@
             <state relative-caret-position="238">
               <caret line="16" column="0" lean-forward="false" selection-start-line="16" selection-start-column="0" selection-end-line="16" selection-end-column="0" />
               <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="main_activity.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/mike/artisttracker/main_activity.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-289">
+              <caret line="50" column="77" lean-forward="false" selection-start-line="50" selection-start-column="77" selection-end-line="50" selection-end-column="77" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <marker date="1509678318498" expanded="true" signature="2956:3122" ph="{...}" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -158,11 +172,9 @@
       <file leaf-file-name="saved_artist.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/mike/artisttracker/saved_artist.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="153">
-              <caret line="31" column="0" lean-forward="false" selection-start-line="31" selection-start-column="0" selection-end-line="31" selection-end-column="0" />
+            <state relative-caret-position="170">
+              <caret line="32" column="55" lean-forward="false" selection-start-line="32" selection-start-column="43" selection-end-line="32" selection-end-column="55" />
               <folding>
-                <element signature="e#2843#2844#0" expanded="true" />
-                <element signature="e#2892#2893#0" expanded="true" />
                 <marker date="1509678318503" expanded="true" signature="2143:2144" ph="{...}" />
               </folding>
             </state>
@@ -1918,9 +1930,9 @@
         <option value="$PROJECT_DIR$/app/src/main/java/com/mike/artisttracker/main_activity.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/mike/artisttracker/blur_bitmap.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/mike/artisttracker/saved_artist.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/mike/artisttracker/artist_search_activity.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/values/strings.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/individual_artist.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/mike/artisttracker/artist_search_activity.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/mike/artisttracker/individual_artist_activity.java" />
       </list>
     </option>
@@ -2209,7 +2221,7 @@
       <option name="ACTIVITY_CLASS" value="" />
       <method>
         <option name="Android.Gradle.BeforeRunTask" enabled="true" />
-        <option name="com.android.instantApps.provision.BeforeRunTask" enabled="true" clearCache="false" clearProvisionedDevices="false" myTimestamp="1509751647237" />
+        <option name="com.android.instantApps.provision.BeforeRunTask" enabled="true" clearCache="false" clearProvisionedDevices="false" myTimestamp="1509760576468" />
       </method>
     </configuration>
     <configuration default="true" type="AndroidTestRunConfigurationType" factoryName="Android Instrumented Tests">
@@ -2257,7 +2269,7 @@
       </Profilers>
       <method>
         <option name="Android.Gradle.BeforeRunTask" enabled="true" />
-        <option name="com.android.instantApps.provision.BeforeRunTask" enabled="true" clearCache="false" clearProvisionedDevices="false" myTimestamp="1509751647238" />
+        <option name="com.android.instantApps.provision.BeforeRunTask" enabled="true" clearCache="false" clearProvisionedDevices="false" myTimestamp="1509760576469" />
       </method>
     </configuration>
     <configuration default="true" type="Application" factoryName="Application">
@@ -2440,7 +2452,7 @@
       <option name="ACTIVITY_CLASS" value="" />
       <method>
         <option name="Android.Gradle.BeforeRunTask" enabled="true" />
-        <option name="com.android.instantApps.provision.BeforeRunTask" enabled="true" clearCache="false" clearProvisionedDevices="false" myTimestamp="1509751647240" />
+        <option name="com.android.instantApps.provision.BeforeRunTask" enabled="true" clearCache="false" clearProvisionedDevices="false" myTimestamp="1509760576471" />
       </method>
     </configuration>
     <list size="1">
@@ -2582,7 +2594,7 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="19" />
+      <option name="time" value="23" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -2592,8 +2604,6 @@
         <state relative-caret-position="1207">
           <caret line="71" column="5" lean-forward="false" selection-start-line="71" selection-start-column="5" selection-end-line="71" selection-end-column="5" />
           <folding>
-            <element signature="e#2843#2844#0" expanded="true" />
-            <element signature="e#2892#2893#0" expanded="true" />
             <marker date="1509678318503" expanded="true" signature="2143:2144" ph="{...}" />
           </folding>
         </state>
@@ -2655,8 +2665,6 @@
         <state relative-caret-position="1020">
           <caret line="78" column="0" lean-forward="false" selection-start-line="78" selection-start-column="0" selection-end-line="78" selection-end-column="0" />
           <folding>
-            <element signature="e#2843#2844#0" expanded="true" />
-            <element signature="e#2892#2893#0" expanded="true" />
             <marker date="1509678318503" expanded="true" signature="2143:2144" ph="{...}" />
           </folding>
         </state>
@@ -2678,8 +2686,6 @@
         <state relative-caret-position="1326">
           <caret line="78" column="0" lean-forward="true" selection-start-line="78" selection-start-column="0" selection-end-line="78" selection-end-column="0" />
           <folding>
-            <element signature="e#2843#2844#0" expanded="true" />
-            <element signature="e#2892#2893#0" expanded="true" />
             <marker date="1509678318503" expanded="true" signature="2143:2144" ph="{...}" />
           </folding>
         </state>
@@ -2774,8 +2780,6 @@
         <state relative-caret-position="1224">
           <caret line="72" column="0" lean-forward="true" selection-start-line="72" selection-start-column="0" selection-end-line="72" selection-end-column="0" />
           <folding>
-            <element signature="e#2843#2844#0" expanded="true" />
-            <element signature="e#2892#2893#0" expanded="true" />
             <marker date="1509678318503" expanded="true" signature="2143:2144" ph="{...}" />
           </folding>
         </state>
@@ -2868,17 +2872,6 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/mike/artisttracker/MODE_PRIVATE.java" />
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/mike/artisttracker/main_activity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="476">
-          <caret line="50" column="77" lean-forward="false" selection-start-line="50" selection-start-column="77" selection-end-line="50" selection-end-column="77" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <marker date="1509678318498" expanded="true" signature="2956:3122" ph="{...}" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/mike/artisttracker/blur_bitmap.java" />
     <entry file="file://$USER_HOME$/AppData/Local/Android/sdk/sources/android-26/java/lang/ReflectiveOperationException.java">
       <provider selected="true" editor-type-id="text-editor">
@@ -2941,18 +2934,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/mike/artisttracker/saved_artist.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="31" column="0" lean-forward="false" selection-start-line="31" selection-start-column="0" selection-end-line="31" selection-end-column="0" />
-          <folding>
-            <element signature="e#2843#2844#0" expanded="true" />
-            <element signature="e#2892#2893#0" expanded="true" />
-            <marker date="1509678318503" expanded="true" signature="2143:2144" ph="{...}" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/searchresults.xml">
       <provider selected="true" editor-type-id="android-designer2">
         <state />
@@ -2996,14 +2977,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/mike/artisttracker/artist_list_activity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="16" column="0" lean-forward="false" selection-start-line="16" selection-start-column="0" selection-end-line="16" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/individual_artist.xml">
       <provider editor-type-id="android-designer2">
         <state />
@@ -3026,10 +2999,39 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/mike/artisttracker/saved_artist.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="32" column="55" lean-forward="false" selection-start-line="32" selection-start-column="43" selection-end-line="32" selection-end-column="55" />
+          <folding>
+            <marker date="1509678318503" expanded="true" signature="2143:2144" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/mike/artisttracker/artist_list_activity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="238">
+          <caret line="16" column="0" lean-forward="false" selection-start-line="16" selection-start-column="0" selection-end-line="16" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/mike/artisttracker/main_activity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-289">
+          <caret line="50" column="77" lean-forward="false" selection-start-line="50" selection-start-column="77" selection-end-line="50" selection-end-column="77" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <marker date="1509678318498" expanded="true" signature="2956:3122" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/mike/artisttracker/artist_search_activity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="288">
-          <caret line="129" column="41" lean-forward="false" selection-start-line="129" selection-start-column="41" selection-end-line="129" selection-end-column="41" />
+        <state relative-caret-position="356">
+          <caret line="100" column="65" lean-forward="false" selection-start-line="100" selection-start-column="0" selection-end-line="101" selection-end-column="0" />
           <folding>
             <element signature="e#3714#4336#0" expanded="true" />
             <element signature="e#4335#4336#0" expanded="true" />
@@ -3039,9 +3041,14 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/mike/artisttracker/individual_artist_activity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="390">
-          <caret line="76" column="21" lean-forward="true" selection-start-line="76" selection-start-column="21" selection-end-line="76" selection-end-column="21" />
-          <folding />
+        <state relative-caret-position="288">
+          <caret line="78" column="9" lean-forward="true" selection-start-line="78" selection-start-column="9" selection-end-line="78" selection-end-column="9" />
+          <folding>
+            <element signature="e#2765#3036#0" expanded="true" />
+            <element signature="e#3035#3036#0" expanded="true" />
+            <element signature="e#3112#3388#0" expanded="true" />
+            <element signature="e#3387#3388#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
