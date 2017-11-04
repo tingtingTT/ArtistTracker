@@ -65,8 +65,8 @@ public class main_activity extends AppCompatActivity implements View.OnClickList
         setContentView(R.layout.main);
         // set background blur
         ImageView background = (ImageView)findViewById(R.id.backgroud_image_view);
-        Bitmap backgroundBmp = blur_bitmap.blur_image(this, BitmapFactory.decodeResource(getResources(), R.drawable.main_background));
-        background.setImageBitmap(backgroundBmp);
+        Bitmap background_bmp = blur_bitmap.blur_image(this, BitmapFactory.decodeResource(getResources(), R.drawable.main));
+        background.setImageBitmap(background_bmp);
 
         init_layout();
 
