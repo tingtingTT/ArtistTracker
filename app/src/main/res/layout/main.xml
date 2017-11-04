@@ -88,7 +88,7 @@
         android:id="@+id/backgroud_image_view"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:contentDescription="@string/backgroud"
+        android:contentDescription="@string/background"
         android:scaleType="centerCrop"
         app:srcCompat="@drawable/main_background"
         tools:layout_constraintTop_creator="1"

@@ -2,7 +2,14 @@ package com.mike.artisttracker;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
+import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import static android.widget.Toast.*;
+import static com.mike.artisttracker.saved_artist.savedArtists;
 
 
 public class individual_artist_activity extends AppCompatActivity {
@@ -11,6 +18,9 @@ public class individual_artist_activity extends AppCompatActivity {
     public TextView artist_info;
     public TextView concert_info;
     public TextView album_info;
+    public saved_artist sa;
+
+
 
     public void init_layout() {
 
@@ -18,8 +28,8 @@ public class individual_artist_activity extends AppCompatActivity {
         artist_info = (TextView) findViewById(R.id.artist_info);
         concert_info = (TextView) findViewById(R.id.concert_info);
         album_info = (TextView) findViewById(R.id.album_info);
+//        sa = get_artist();
 
-        saved_artist sa = get_artist();
 
         // call setText Before setContentView ?
         artist_name.setText(sa.getArtistName());
@@ -48,10 +58,56 @@ public class individual_artist_activity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.individual_artist);
+        sa = get_artist();
+
+        Button add_button = (Button)findViewById(R.id.add);
+        Button delete_button = (Button)findViewById(R.id.delete);
+        int isAdd = getIntent().getIntExtra("add", 0);
+
+        // set buttons visibility
+        // if add value is 1, show add button, hide delete button
+        if (isAdd == 1)
+        {
+            add_button.setVisibility(View.VISIBLE);
+            delete_button.setVisibility(View.GONE);
+            Log.d("add", "Using add button");
+
+
+        }
+        // otherwise hide add button, show delete button
+        else
+        {
+            delete_button.setVisibility(View.VISIBLE);
+            add_button.setVisibility(View.GONE);
+            Log.d("add", "Using delete button");
+            // delete from the list
+            savedArtists.remove(sa);
+        }
 
         // call before setContentView?
-        get_artist();
+        // get_artist();
         parse_concert_data();
         init_layout();
+
+        // set button on click
+        add_button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // add to list
+                savedArtists.add(sa);
+                Toast.makeText(getBaseContext(), "added", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        // set button on click
+        delete_button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // add to list
+                savedArtists.remove(sa);
+                Toast.makeText(getBaseContext(), "deleted", Toast.LENGTH_SHORT).show();
+            }
+        });
+
     }
 }

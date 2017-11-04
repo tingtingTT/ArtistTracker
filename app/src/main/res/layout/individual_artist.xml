@@ -41,6 +41,20 @@
         tools:layout_editor_absoluteX="100dp"
         tools:layout_editor_absoluteY="38dp" />
 
+    <Button
+        android:id="@+id/add"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/add"
+        android:textAllCaps="false" />
+
+    <Button
+        android:id="@+id/delete"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/delete"
+        android:textAllCaps="false" />
+
 </LinearLayout>
 
 
