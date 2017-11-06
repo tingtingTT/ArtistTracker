@@ -59,7 +59,7 @@ public class individual_artist_activity extends AppCompatActivity {
     }
 
     public void parse_concert_data() {
-        //need artist object
+        //need concert information
     }
 
 
