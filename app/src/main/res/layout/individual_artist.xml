@@ -16,7 +16,8 @@
         android:scaleType="centerCrop"
         app:layout_constraintBottom_toBottomOf="@+id/add"
         app:layout_constraintStart_toStartOf="@+id/artist_name"
-        app:srcCompat="@drawable/artist" />
+        app:srcCompat="@drawable/artist"
+        android:scaleX="-1"/>
 
     <TextView
         android:id="@+id/concert_info"
@@ -27,7 +28,8 @@
         app:layout_constraintBottom_toTopOf="@+id/album_info"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/artist_info" />
+        app:layout_constraintTop_toBottomOf="@+id/artist_info"
+        android:textColor="@color/White"/>
 
     <TextView
         android:id="@+id/album_info"
@@ -38,7 +40,8 @@
         app:layout_constraintBottom_toTopOf="@+id/add"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/concert_info" />
+        app:layout_constraintTop_toBottomOf="@+id/concert_info"
+        android:textColor="@color/White"/>
 
     <TextView
         android:id="@+id/artist_info"
@@ -49,7 +52,8 @@
         app:layout_constraintBottom_toTopOf="@+id/concert_info"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/artist_name" />
+        app:layout_constraintTop_toBottomOf="@+id/artist_name"
+        android:textColor="@color/White"/>
 
     <TextView
         android:id="@+id/artist_name"
@@ -61,7 +65,8 @@
         app:layout_constraintBottom_toTopOf="@+id/artist_info"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        android:textColor="@color/White"/>
 
     <Button
         android:id="@+id/add"

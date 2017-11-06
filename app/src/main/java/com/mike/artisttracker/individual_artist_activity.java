@@ -26,6 +26,7 @@ public class individual_artist_activity extends AppCompatActivity {
 
 
 
+
     public void init_layout(saved_artist sa) {
 
         // blur image

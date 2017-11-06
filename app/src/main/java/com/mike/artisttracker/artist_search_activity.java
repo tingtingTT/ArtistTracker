@@ -45,10 +45,31 @@ public class artist_search_activity extends AppCompatActivity implements SearchV
     public static ArrayList<String> album_result = new ArrayList<>();
     public static ArrayList<String> event_result = new ArrayList<>();
 
+
+    public void init_layout()
+    {
+
+        // init button by id
+        /*confirm_search_single_artist_button = (Button)findViewById(R.id.confirm_search_single_artist_button);
+
+        // user clicks search this selected artist
+        confirm_search_single_artist_button.setOnClickListener(new View.OnClickListener()
+        {A
+            @Override
+            public void onClick(View v)
+            {
+                Intent intent = new Intent(artist_search_activity.this, individual_artist_activity.class);
+                startActivity(intent);
+            }
+        });*/
+
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.artist_search);
+        init_layout();
 
         //https://stackoverflow.com/questions/6343166/how-do-i-fix-android-os-networkonmainthreadexception   - bad idea??? read
         StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
@@ -94,7 +115,7 @@ public class artist_search_activity extends AppCompatActivity implements SearchV
 
             System.out.println(result_artist_list.toString());
             final ListView lv = (ListView) findViewById(R.id.search_results);
-            ArrayAdapter<String> adapter = new ArrayAdapter<>(this,R.layout.searchresults,name_result);
+            ArrayAdapter<String> adapter = new ArrayAdapter<>(this,R.layout.artist_list_detail,name_result);
             lv.setAdapter(adapter);
             lv.setClickable(true);
 

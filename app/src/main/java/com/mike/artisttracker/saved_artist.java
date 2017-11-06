@@ -115,6 +115,37 @@ public class saved_artist implements Serializable{
         return top_albums;
     }
 
+    //saves savedArtists to textfile for persisting data
+    //need to pass a context to use openFileOutput - use getApplicationContext() I think? will test
+    public static void saveDataToText(Context context){
+        try {
+            FileOutputStream os = context.openFileOutput("SavedArtist.txt", MODE_PRIVATE);
+            ObjectOutputStream output = new ObjectOutputStream(os);
+            output.writeObject(savedArtists);
+            output.close();
+        }
+        catch (java.io.IOException e) {
+            //do something if an IOException occurs.
+            System.out.println("ERROR"); //temporary
+        }
+    }
 
+    //grabs persisting data and updates the savedArtist Data
+    public static void grabDataFromFile(Context context){
+        try{
+
+            String file_name = "SavedArtist.txt";
+            FileInputStream inputStream = context.openFileInput("SavedArtist.txt");
+            ObjectInputStream objStream = new ObjectInputStream(inputStream);
+            savedArtists = (ArrayList<saved_artist>) objStream.readObject();
+
+            inputStream.close();
+
+
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 
 }
