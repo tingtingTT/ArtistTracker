@@ -71,6 +71,8 @@ public class individual_artist_activity extends AppCompatActivity {
 
         final Button add_button = (Button)findViewById(R.id.add);
         final Button delete_button = (Button)findViewById(R.id.delete);
+
+        // todo perhaps checking if sa is in savedArtist collection instead?
         int isAdd = getIntent().getIntExtra("add", 0);
 
         // set buttons visibility

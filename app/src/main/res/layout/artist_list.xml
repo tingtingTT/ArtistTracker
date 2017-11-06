@@ -4,20 +4,25 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.mike.artisttracker.artist_list_activity">
+    tools:context="com.mike.artisttracker.artist_list_activity"
+    tools:layout_editor_absoluteY="81dp">
 
     <ListView
         android:id="@+id/saved_artist_list_view"
-        android:layout_width="392dp"
-        android:layout_height="507dp"
-        android:layout_marginBottom="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginRight="8dp"
-        android:layout_marginTop="8dp"
+
+        android:layout_width="match_parent"
+        android:layout_height="335dp"
+
+        android:background="#cdd2ed"
+        android:divider=" #334ee6"
+        android:dividerHeight="5dp"
+        android:listSelector="#667cf3"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0"
         tools:layout_constraintBottom_creator="1"
         tools:layout_constraintLeft_creator="1"
         tools:layout_constraintRight_creator="1"
@@ -25,10 +30,12 @@
 
     <ImageView
         android:id="@+id/artist_background"
-        android:layout_width="416dp"
-        android:layout_height="wrap_content"
+        android:layout_width="385dp"
+        android:layout_height="191dp"
         android:scaleType="centerCrop"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/list"
-        tools:layout_editor_absoluteX="0dp" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/saved_artist_list_view"
+        app:srcCompat="@drawable/list" />
 </android.support.constraint.ConstraintLayout>
