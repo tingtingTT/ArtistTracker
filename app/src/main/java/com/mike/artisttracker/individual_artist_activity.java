@@ -1,5 +1,6 @@
 package com.mike.artisttracker;
 
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.support.v7.app.AppCompatActivity;
@@ -110,6 +111,8 @@ public class individual_artist_activity extends AppCompatActivity {
                 Toast.makeText(getBaseContext(), "added", Toast.LENGTH_SHORT).show();
                 // hide the add button once user clicks it
                 add_button.setVisibility(View.GONE);
+                Intent search_intent = new Intent(individual_artist_activity.this, main_activity.class);
+                startActivity(search_intent);
             }
         });
 
@@ -121,6 +124,9 @@ public class individual_artist_activity extends AppCompatActivity {
                 savedArtists.remove(sa);
                 Toast.makeText(getBaseContext(), "deleted", Toast.LENGTH_SHORT).show();
                 delete_button.setVisibility(View.GONE);
+                Intent search_intent = new Intent(individual_artist_activity.this, artist_list_activity.class);
+                startActivity(search_intent);
+
             }
         });
 

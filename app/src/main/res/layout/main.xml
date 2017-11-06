@@ -25,6 +25,7 @@
 
     <Button
         android:id="@+id/album_button"
+        android:textSize="24sp"
         android:layout_width="0dp"
         android:layout_height="59dp"
         android:layout_marginBottom="79dp"
@@ -46,6 +47,7 @@
 
     <Button
         android:id="@+id/concert_button"
+        android:textSize="24sp"
         android:layout_width="0dp"
         android:layout_height="55dp"
         android:layout_marginEnd="18dp"
@@ -64,6 +66,7 @@
 
     <Button
         android:id="@+id/saved_artist_button"
+        android:textSize="24sp"
         android:layout_width="0dp"
         android:layout_height="60dp"
         android:layout_marginBottom="279dp"
