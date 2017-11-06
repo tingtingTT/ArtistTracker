@@ -36,8 +36,8 @@ public class saved_artist implements Serializable{
     private String artist_url;
     private String artist_mbid;
     private String artist_info;
+    private String artist_image;
     private PaginatedResult<Event> artist_events; //Concerts
-    private PaginatedResult<Image> artist_image;
     private Collection<Album> top_albums; //for info
     private Album upcomingAlbum;
 
@@ -46,7 +46,6 @@ public class saved_artist implements Serializable{
         artist_mbid = mbid;
         //top_albums = updateArtistTopAlbums(name); // API CALL
         //artist_events = updateArtistEvents(mbid); // API CALL
-        //artistImage  = null; TO BE ADDED
     }
 
     public void setArtistName(String name){
@@ -59,15 +58,14 @@ public class saved_artist implements Serializable{
     public void setArtistMBID(String mbid){
         artist_mbid = mbid;
     }
-
-    public void setArtistInfo(String info){
-        artist_info = info;
-    }
+    public void setArtistInfo(String info){ artist_info = info; }
+    public void setArtist_image(String image) {artist_image = image; }
 
     public String getArtistName() { return artist_name; }
     public String getArtistURL() { return artist_url; }
     public String getArtistMBID() { return artist_mbid; }
     public String getArtistInfo() { return artist_info; }
+    public String getArtist_image() { return artist_image; }
     public Collection<Album> getArtistTopAlbums(){ return top_albums; }
     public PaginatedResult<Event> getArtistsEvents(){ return artist_events; }
 

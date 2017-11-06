@@ -24,11 +24,13 @@ import android.widget.Toast;
 import java.util.ArrayList;
 import java.util.Collection;
 import de.umass.lastfm.Artist;
+import de.umass.lastfm.ImageSize;
 //import android.support.v7.widget.SearchView;
 
 
 
 import static com.mike.artisttracker.saved_artist.savedArtists;
+import static de.umass.lastfm.Artist.getInfo;
 import static de.umass.lastfm.Artist.search;
 
 
@@ -91,6 +93,12 @@ public class artist_search_activity extends AppCompatActivity implements SearchV
         return search(query,"44ce572665909f50a88232d35e667812");
     }
 
+    public Artist getArtistInfoApiCall(String nameOrMBID) {
+        Artist a = getInfo(nameOrMBID, null, null, "44ce572665909f50a88232d35e667812");
+        return a;
+
+    }
+
     @Override
     public boolean onQueryTextSubmit(String query) {
         if(query.length() != 0){
@@ -110,6 +118,7 @@ public class artist_search_activity extends AppCompatActivity implements SearchV
             ArrayAdapter<String> adapter = new ArrayAdapter<>(this,R.layout.searchresults,name_result);
             lv.setAdapter(adapter);
             lv.setClickable(true);
+
             // set on click for list view and save entry as a save_artist object
             lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                 @Override
@@ -118,6 +127,12 @@ public class artist_search_activity extends AppCompatActivity implements SearchV
                     saved_artist saved_artist = new saved_artist(name_result.get(position), mbid_result.get(position));
                     saved_artist.setArtistURL(url_result.get(position));
                     saved_artist.setArtistInfo(info_result.get(position));
+
+                    // When a specific artist is clicked, additional API call is made to get artist info
+                    Artist b = getArtistInfoApiCall(saved_artist.getArtistMBID());
+                    saved_artist.setArtistInfo(b.getWikiSummary());
+                    saved_artist.setArtist_image(b.getImageURL(ImageSize.LARGE));
+
                     transferArtist(saved_artist);
                 }
             });

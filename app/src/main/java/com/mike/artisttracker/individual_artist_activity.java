@@ -26,7 +26,7 @@ public class individual_artist_activity extends AppCompatActivity {
 
 
 
-    public void init_layout() {
+    public void init_layout(saved_artist sa) {
 
         // blur image
         ImageView background = (ImageView)findViewById(R.id.individual_artist);
@@ -96,7 +96,7 @@ public class individual_artist_activity extends AppCompatActivity {
         // call before setContentView?
         // get_artist();
         parse_concert_data();
-        init_layout();
+        init_layout(sa);
 
         // set button on click
         add_button.setOnClickListener(new View.OnClickListener() {
