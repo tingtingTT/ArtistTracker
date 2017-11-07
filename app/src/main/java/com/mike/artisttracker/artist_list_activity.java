@@ -70,7 +70,8 @@ public class artist_list_activity extends AppCompatActivity {
         switch(item.getItemId()){
             case R.id.delete_artist:
                 saved_artist artist_to_delete = (saved_artist) savedArtists.toArray()[obj.position];
-                savedArtists.remove(artist_to_delete);
+                saved_artist.deleteArtist(artist_to_delete);
+                Toast.makeText(getBaseContext(), "" + artist_to_delete.getArtistName() +" is deleted", Toast.LENGTH_SHORT).show();
                 saved_artist_names.remove(obj.position);
                 adapter.notifyDataSetChanged();
             break;

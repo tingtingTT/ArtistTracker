@@ -76,17 +76,29 @@ public class saved_artist implements Serializable{
     }
 
     //check for artist with Name and MBID, if found - remove from arrayList
-    public void deleteArtist(saved_artist specificArtist){
+    public static void deleteArtist(saved_artist specificArtist){
         for (saved_artist artists : savedArtists) {
-            if(artists.equals(specificArtist)){
+            if(artists.getArtistMBID().equals(specificArtist.getArtistMBID())){
                 savedArtists.remove(artists);
             }
         }
     }
 
-    //adds artist to Collection
-    public void addArtist(saved_artist specific_artist){
+    public static void addArtist(saved_artist specific_artist){
+        boolean alread_saved = isSaved(specific_artist);
         savedArtists.add(specific_artist);
+    }
+
+    public static boolean isSaved(saved_artist specific_artist){
+        boolean alread_saved = false;
+
+        for (saved_artist artists : savedArtists) {
+            if(artists.getArtistMBID().equals(specific_artist.getArtistMBID())){
+                alread_saved = true;
+            }
+        }
+        return alread_saved;
+
     }
 
     //makes API call for events, unparsed
