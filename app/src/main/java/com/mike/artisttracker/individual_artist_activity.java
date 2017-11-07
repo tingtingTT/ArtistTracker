@@ -107,8 +107,9 @@ public class individual_artist_activity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 // add to list
-                savedArtists.add(sa);
-                Toast.makeText(getBaseContext(), "added", Toast.LENGTH_SHORT).show();
+                saved_artist.addArtist(sa);
+                Toast.makeText(getBaseContext(), "" + sa.getArtistName() + " is added.", Toast.LENGTH_SHORT).show();
+
                 // hide the add button once user clicks it
                 add_button.setVisibility(View.GONE);
                 Intent search_intent = new Intent(individual_artist_activity.this, main_activity.class);
@@ -121,8 +122,10 @@ public class individual_artist_activity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 // add to list
-                savedArtists.remove(sa);
-                Toast.makeText(getBaseContext(), "deleted", Toast.LENGTH_SHORT).show();
+                saved_artist.deleteArtist(sa);
+                Toast.makeText(getBaseContext(), "" + sa.getArtistName() +" is deleted", Toast.LENGTH_SHORT).show();
+
+                // hide the add button once user clicks it
                 delete_button.setVisibility(View.GONE);
                 Intent search_intent = new Intent(individual_artist_activity.this, artist_list_activity.class);
                 startActivity(search_intent);

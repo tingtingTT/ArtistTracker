@@ -147,15 +147,20 @@ public class artist_search_activity extends AppCompatActivity implements SearchV
         return false;
     }
 
-
     // Transfers an artist object to individual_artist_activity
-    // using intent and serializable
+// using intent and serializable
     public void transferArtist(saved_artist a) {
         // temp artist used as example
 
         Intent i = new Intent(artist_search_activity.this, individual_artist_activity.class);
         Bundle b = new Bundle();
-        int add = 1;
+
+        int add;
+        if(saved_artist.isSaved(a)){
+            add = 0;
+        }
+        else
+            add = 1;
 
         // Puts the saved artist "a" into the bundle using the key "savedKey"
         b.putSerializable("savedKey", a);
@@ -164,7 +169,4 @@ public class artist_search_activity extends AppCompatActivity implements SearchV
 
         startActivity(i);
     }
-
-
-
 }
