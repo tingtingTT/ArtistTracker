@@ -16,6 +16,7 @@
 
 package com.mike.artisttracker;
 
+import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
@@ -25,6 +26,12 @@ import android.view.View;
 import android.widget.Button;
 import android.support.design.widget.FloatingActionButton;
 import android.widget.ImageView;
+
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.util.ArrayList;
 //import static com.mike.artisttracker.R.string.API_KEY;
 
 
@@ -67,7 +74,7 @@ public class main_activity extends AppCompatActivity implements View.OnClickList
         ImageView background = (ImageView)findViewById(R.id.backgroud_image_view);
         Bitmap background_bmp = blur_bitmap.blur_image(this, BitmapFactory.decodeResource(getResources(), R.drawable.main));
         background.setImageBitmap(background_bmp);
-
+        grabDataFromFile();
         init_layout();
 
     }
@@ -100,6 +107,39 @@ public class main_activity extends AppCompatActivity implements View.OnClickList
                 Intent search_intent = new Intent(main_activity.this, artist_search_activity.class);
                 startActivity(search_intent);
                 break;
+        }
+    }
+
+    //saves savedArtists to textfile for persisting data
+    //need to pass a context to use openFileOutput - use getApplicationContext() I think? will test
+    public void saveDataToText(){
+        try {
+            FileOutputStream os = openFileOutput("SavedArtist.txt", MODE_PRIVATE);
+            ObjectOutputStream output = new ObjectOutputStream(os);
+            output.writeObject(saved_artist.savedArtists);
+            output.close();
+        }
+        catch (java.io.IOException e) {
+            //do something if an IOException occurs.
+            System.out.println("ERROR"); //temporary
+        }
+    }
+
+    //grabs persisting data and updates the savedArtist Data
+    public void grabDataFromFile(){
+        try{
+
+            String file_name = "SavedArtist.txt";
+            FileInputStream inputStream = openFileInput("SavedArtist.txt");
+            ObjectInputStream objStream = new ObjectInputStream(inputStream);
+            saved_artist.savedArtists = (ArrayList<saved_artist>) objStream.readObject();
+
+            inputStream.close();
+
+
+
+        } catch (Exception e) {
+            e.printStackTrace();
         }
     }
 
