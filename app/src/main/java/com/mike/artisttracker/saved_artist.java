@@ -60,12 +60,14 @@ public class saved_artist implements Serializable{
     }
     public void setArtistInfo(String info){ artist_info = info; }
     public void setArtist_image(String image) {artist_image = image; }
+    public void setArtistEventInfo(PaginatedResult e) {artist_events = e;}
 
     public String getArtistName() { return artist_name; }
     public String getArtistURL() { return artist_url; }
     public String getArtistMBID() { return artist_mbid; }
     public String getArtistInfo() { return artist_info; }
     public String getArtist_image() { return artist_image; }
+    public PaginatedResult<Event> getArtistEventInfo() {return artist_events; }
     public Collection<Album> getArtistTopAlbums(){ return top_albums; }
     public PaginatedResult<Event> getArtistsEvents(){ return artist_events; }
 
