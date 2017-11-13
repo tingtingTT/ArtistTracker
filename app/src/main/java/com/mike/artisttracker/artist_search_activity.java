@@ -24,14 +24,18 @@ import android.widget.Toast;
 import java.util.ArrayList;
 import java.util.Collection;
 import de.umass.lastfm.Artist;
+import de.umass.lastfm.Event;
 import de.umass.lastfm.ImageSize;
+import de.umass.lastfm.PaginatedResult;
 //import android.support.v7.widget.SearchView;
 
 
 
 import static com.mike.artisttracker.saved_artist.savedArtists;
+import static de.umass.lastfm.Artist.getEvents;
 import static de.umass.lastfm.Artist.getInfo;
 import static de.umass.lastfm.Artist.search;
+import static de.umass.lastfm.Artist.getEvents;
 
 
 public class artist_search_activity extends AppCompatActivity implements SearchView.OnQueryTextListener{
@@ -96,8 +100,12 @@ public class artist_search_activity extends AppCompatActivity implements SearchV
     public Artist getArtistInfoApiCall(String nameOrMBID) {
         Artist a = getInfo(nameOrMBID, null, null, "44ce572665909f50a88232d35e667812");
         return a;
-
     }
+
+    public PaginatedResult<Event> getEventResults(String nameOrMBID) {
+        return getEvents(nameOrMBID, "44ce572665909f50a88232d35e667812" );
+    }
+
 
     @Override
     public boolean onQueryTextSubmit(String query) {
@@ -127,6 +135,7 @@ public class artist_search_activity extends AppCompatActivity implements SearchV
                     saved_artist saved_artist = new saved_artist(name_result.get(position), mbid_result.get(position));
                     saved_artist.setArtistURL(url_result.get(position));
                     saved_artist.setArtistInfo(info_result.get(position));
+                    saved_artist.setArtistEventInfo(saved_artist.updateArtistEvents(saved_artist.getArtistMBID()));
 
                     // When a specific artist is clicked, additional API call is made to get artist info
                     Artist b = getArtistInfoApiCall(saved_artist.getArtistMBID());
