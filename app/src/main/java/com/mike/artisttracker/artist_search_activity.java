@@ -23,13 +23,13 @@ import de.umass.lastfm.ImageSize;
 import de.umass.lastfm.PaginatedResult;
 //import android.support.v7.widget.SearchView;
 
-
-<<<<<<< HEAD
-=======
-
-import static com.mike.artisttracker.saved_artist.savedArtists;
-import static de.umass.lastfm.Artist.getEvents;
->>>>>>> master
+//
+// <<<<<<< HEAD
+// =======
+//
+// import static com.mike.artisttracker.saved_artist.savedArtists;
+// import static de.umass.lastfm.Artist.getEvents;
+// >>>>>>> master
 import static de.umass.lastfm.Artist.getInfo;
 import static de.umass.lastfm.Artist.search;
 import static de.umass.lastfm.Artist.getEvents;
