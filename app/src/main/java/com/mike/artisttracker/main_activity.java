@@ -130,8 +130,8 @@ public class main_activity extends AppCompatActivity implements View.OnClickList
     public void grabDataFromFile(){
         try{
 
-            String file_name = "SavedArtist.txt";
-            FileInputStream inputStream = openFileInput("SavedArtist.txt");
+            String file_name = "SavedArtists.txt";
+            FileInputStream inputStream = openFileInput("SavedArtists.txt");
             ObjectInputStream objStream = new ObjectInputStream(inputStream);
             saved_artist.savedArtists = (ArrayList<saved_artist>) objStream.readObject();
 
