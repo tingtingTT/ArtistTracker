@@ -2,9 +2,9 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/CMPS121ArtistTracker.iml" filepath="$PROJECT_DIR$/CMPS121ArtistTracker.iml" />
       <module fileurl="file://C:\Users\tingt\Desktop\cmps121\CMPS121ArtistTracker.iml" filepath="C:\Users\tingt\Desktop\cmps121\CMPS121ArtistTracker.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
-      <module fileurl="file://$PROJECT_DIR$/cmps121.iml" filepath="$PROJECT_DIR$/cmps121.iml" />
       <module fileurl="file://C:\Users\Kyle Batross\Desktop\CMPS121ArtistTracker\cmps121.iml" filepath="C:\Users\Kyle Batross\Desktop\CMPS121ArtistTracker\cmps121.iml" />
     </modules>
   </component>

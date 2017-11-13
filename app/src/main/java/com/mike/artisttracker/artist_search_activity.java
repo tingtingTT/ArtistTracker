@@ -184,8 +184,5 @@ public class artist_search_activity extends AppCompatActivity implements SearchV
         startActivity(i);
     }
 
-    @Override
-    public void onBackPressed() {
-        startActivity(new Intent(this, main_activity.class));
-    }
+
 }
