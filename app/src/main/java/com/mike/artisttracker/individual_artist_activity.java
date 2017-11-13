@@ -29,6 +29,7 @@ public class individual_artist_activity extends AppCompatActivity {
     public TextView album_info;
     public ImageView artistImage;
     public saved_artist sa;
+    public int add;
 
 
 
@@ -90,6 +91,7 @@ public class individual_artist_activity extends AppCompatActivity {
 
         // todo perhaps checking if sa is in savedArtist collection instead?
         int isAdd = getIntent().getIntExtra("add", 0);
+        add = isAdd;
 
         // set buttons visibility
         // if add value is 1, show add button, hide delete button
@@ -152,6 +154,13 @@ public class individual_artist_activity extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-        startActivity(new Intent(this, artist_list_activity.class));
+        if(add == 0)
+        {
+            startActivity(new Intent(this, artist_list_activity.class));
+        }
+        else
+        {
+            startActivity(new Intent(this, artist_search_activity.class));
+        }
     }
 }
