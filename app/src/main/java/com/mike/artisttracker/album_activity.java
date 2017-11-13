@@ -49,6 +49,10 @@ public class album_activity extends AppCompatActivity {
         adapter = new ArrayAdapter<String>(album_activity.this,R.layout.artist_list_detail, saved_album_names);
         album_list_view.setAdapter(adapter);
 
+<<<<<<< HEAD
+=======
+        //registerForContextMenu(album_list_view);
+>>>>>>> 7fce4d6e8bdda387cc5eac882584fe8246f80d14
 
     }
 }
