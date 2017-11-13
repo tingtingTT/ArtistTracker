@@ -97,6 +97,9 @@ public class artist_search_activity extends AppCompatActivity implements SearchV
             Collection<Artist> result_artist_list = new ArrayList<>();
             result_artist_list = getSearchResults(query);
             name_result.clear();
+            url_result.clear();
+            mbid_result.clear();
+            info_result.clear();
             for (Artist artists : result_artist_list) {
                 name_result.add(artists.getName());
                 url_result.add(artists.getUrl());
