@@ -135,7 +135,7 @@ public class artist_search_activity extends AppCompatActivity implements SearchV
                     saved_artist saved_artist = new saved_artist(name_result.get(position), mbid_result.get(position));
                     saved_artist.setArtistURL(url_result.get(position));
                     saved_artist.setArtistInfo(info_result.get(position));
-                    saved_artist.setArtistEventInfo(saved_artist.updateArtistEvents(saved_artist.getArtistMBID()));
+//                    saved_artist.setArtistEventInfo(saved_artist.updateArtistEvents(saved_artist.getArtistMBID()));
 
                     // When a specific artist is clicked, additional API call is made to get artist info
                     Artist b = getArtistInfoApiCall(saved_artist.getArtistMBID());
