@@ -15,6 +15,10 @@ import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 
 import static com.mike.artisttracker.saved_artist.savedArtists;
@@ -73,6 +77,7 @@ public class artist_list_activity extends AppCompatActivity {
                 saved_artist.deleteArtist(artist_to_delete);
                 Toast.makeText(getBaseContext(), "" + artist_to_delete.getArtistName() +" is deleted", Toast.LENGTH_SHORT).show();
                 saved_artist_names.remove(obj.position);
+                saveDataToText();
                 adapter.notifyDataSetChanged();
             break;
         }
@@ -94,6 +99,36 @@ public class artist_list_activity extends AppCompatActivity {
         startActivity(i);
     }
 
+    public void saveDataToText(){
+        try {
+            FileOutputStream os = openFileOutput("SavedArtist.txt", MODE_PRIVATE);
+            ObjectOutputStream output = new ObjectOutputStream(os);
+            output.writeObject(saved_artist.savedArtists);
+            output.close();
+        }
+        catch (java.io.IOException e) {
+            //do something if an IOException occurs.
+            System.out.println("ERROR"); //temporary
+        }
+    }
+
+    //grabs persisting data and updates the savedArtist Data
+    public void grabDataFromFile(){
+        try{
+
+            String file_name = "SavedArtists.txt";
+            FileInputStream inputStream = openFileInput("SavedArtists.txt");
+            ObjectInputStream objStream = new ObjectInputStream(inputStream);
+            saved_artist.savedArtists = (ArrayList<saved_artist>) objStream.readObject();
+
+            inputStream.close();
+
+
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
     @Override
     public void onBackPressed() {
         startActivity(new Intent(this, main_activity.class));

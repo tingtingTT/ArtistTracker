@@ -44,6 +44,7 @@ public class saved_artist implements Serializable{
     public saved_artist(String name, String mbid){
         artist_name = name;
         artist_mbid = mbid;
+        top_albums = null;
         //top_albums = updateArtistTopAlbums(name); // API CALL
         //artist_events = updateArtistEvents(mbid); // API CALL
     }
@@ -81,6 +82,7 @@ public class saved_artist implements Serializable{
     public static void deleteArtist(saved_artist specificArtist){
         for (saved_artist artists : savedArtists) {
             if(artists.getArtistMBID().equals(specificArtist.getArtistMBID())){
+                artists.top_albums = null; // to fix - java.util.ConcurrentModificationException
                 savedArtists.remove(artists);
             }
         }
@@ -125,15 +127,16 @@ public class saved_artist implements Serializable{
         StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
 
         StrictMode.setThreadPolicy(policy);
-        Collection<Album> top_albums = getTopAlbums(name,api_key);
+        top_albums = getTopAlbums(name,api_key);
         return top_albums;
     }
 
     //saves savedArtists to textfile for persisting data
     //need to pass a context to use openFileOutput - use getApplicationContext() I think? will test
+    //just a template, PLEASE DO NOT USE THIS FUNCTION
     public static void saveDataToText(Context context){
         try {
-            FileOutputStream os = context.openFileOutput("SavedArtist.txt", MODE_PRIVATE);
+            FileOutputStream os = context.openFileOutput("SavedArtists.txt", MODE_PRIVATE);
             ObjectOutputStream output = new ObjectOutputStream(os);
             output.writeObject(savedArtists);
             output.close();
@@ -145,10 +148,11 @@ public class saved_artist implements Serializable{
     }
 
     //grabs persisting data and updates the savedArtist Data
+    //just template, PLEASE DO NOT USE THIS FUNCTION
     public static void grabDataFromFile(Context context){
         try{
 
-            String file_name = "SavedArtist.txt";
+            String file_name = "SavedArtists.txt";
             FileInputStream inputStream = context.openFileInput("SavedArtist.txt");
             ObjectInputStream objStream = new ObjectInputStream(inputStream);
             savedArtists = (ArrayList<saved_artist>) objStream.readObject();
