@@ -15,6 +15,11 @@ import android.widget.ListView;
 import android.widget.SearchView;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 import java.util.Collection;
 import de.umass.lastfm.Artist;
@@ -178,4 +183,6 @@ public class artist_search_activity extends AppCompatActivity implements SearchV
 
         startActivity(i);
     }
+
+
 }
