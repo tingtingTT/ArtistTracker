@@ -5,6 +5,7 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.method.ScrollingMovementMethod;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -41,15 +42,19 @@ public class individual_artist_activity extends AppCompatActivity {
 
         artist_name = (TextView) findViewById(R.id.artist_name);
         artist_info = (TextView) findViewById(R.id.artist_info);
-        concert_info = (TextView) findViewById(R.id.concert_info);
-        album_info = (TextView) findViewById(R.id.album_info);
+//        concert_info = (TextView) findViewById(R.id.concert_info);
+//        album_info = (TextView) findViewById(R.id.album_info);
 
 
         // call setText Before setContentView ?
         artist_name.setText(sa.getArtistName());
         artist_info.setText(sa.getArtistInfo());
-        concert_info.setText(sa.getArtistMBID());
-        album_info.setText("");
+        artist_info.setMovementMethod(new ScrollingMovementMethod());
+//        concert_info.setText(sa.getArtistMBID());
+//        album_info.setText("");
+        artist_info.append("\n");
+        artist_info.append(sa.getArtistMBID());
+        artist_info.append("\n \n Album Info:");
 
     }
 
@@ -143,5 +148,10 @@ public class individual_artist_activity extends AppCompatActivity {
             }
         });
 
+    }
+
+    @Override
+    public void onBackPressed() {
+        startActivity(new Intent(this, artist_list_activity.class));
     }
 }

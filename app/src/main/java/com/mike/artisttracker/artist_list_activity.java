@@ -93,4 +93,9 @@ public class artist_list_activity extends AppCompatActivity {
 
         startActivity(i);
     }
+
+    @Override
+    public void onBackPressed() {
+        startActivity(new Intent(this, main_activity.class));
+    }
 }
