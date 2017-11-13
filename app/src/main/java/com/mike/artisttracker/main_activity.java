@@ -143,5 +143,8 @@ public class main_activity extends AppCompatActivity implements View.OnClickList
             e.printStackTrace();
         }
     }
-
+    @Override
+    public void onBackPressed() {
+        startActivity(new Intent(this, main_activity.class));
+    }
 }
