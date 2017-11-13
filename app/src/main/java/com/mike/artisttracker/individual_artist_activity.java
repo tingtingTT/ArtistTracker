@@ -13,11 +13,16 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+<<<<<<< HEAD
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.util.ArrayList;
+=======
+import com.nostra13.universalimageloader.core.ImageLoader;
+import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
+>>>>>>> master
 
 import static android.widget.Toast.*;
 import static com.mike.artisttracker.saved_artist.savedArtists;
@@ -29,6 +34,7 @@ public class individual_artist_activity extends AppCompatActivity {
     public TextView artist_info;
     public TextView concert_info;
     public TextView album_info;
+    public ImageView artistImage;
     public saved_artist sa;
 
 
@@ -36,7 +42,7 @@ public class individual_artist_activity extends AppCompatActivity {
 
     public void init_layout(saved_artist sa) {
 
-        // blur image
+        artistImage = (ImageView)findViewById(R.id.artist_image);
         ImageView background = (ImageView)findViewById(R.id.individual_artist);
         Bitmap background_bmp = blur_bitmap.blur_image(this, BitmapFactory.decodeResource(getResources(), R.drawable.artist));
         background.setImageBitmap(background_bmp);
@@ -45,7 +51,6 @@ public class individual_artist_activity extends AppCompatActivity {
         artist_info = (TextView) findViewById(R.id.artist_info);
         concert_info = (TextView) findViewById(R.id.concert_info);
         album_info = (TextView) findViewById(R.id.album_info);
-//        sa = get_artist();
 
 
         // call setText Before setContentView ?
@@ -77,6 +82,12 @@ public class individual_artist_activity extends AppCompatActivity {
         setContentView(R.layout.individual_artist);
         sa = get_artist();
 
+        // Create global configuration and initialize ImageLoader with this config
+        ImageLoaderConfiguration config = new ImageLoaderConfiguration.Builder(this).build();
+        ImageLoader.getInstance().init(config);
+        ImageLoader imageLoader = ImageLoader.getInstance();
+
+
         final Button add_button = (Button)findViewById(R.id.add);
         final Button delete_button = (Button)findViewById(R.id.delete);
 
@@ -107,6 +118,7 @@ public class individual_artist_activity extends AppCompatActivity {
         // get_artist();
         parse_concert_data();
         init_layout(sa);
+        imageLoader.displayImage(sa.getArtist_image(), artistImage);
 
         // set button on click
         add_button.setOnClickListener(new View.OnClickListener() {
