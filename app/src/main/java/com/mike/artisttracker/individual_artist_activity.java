@@ -13,16 +13,8 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-<<<<<<< HEAD
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
-import java.util.ArrayList;
-=======
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
->>>>>>> master
 
 import static android.widget.Toast.*;
 import static com.mike.artisttracker.saved_artist.savedArtists;
@@ -127,7 +119,7 @@ public class individual_artist_activity extends AppCompatActivity {
                 // add to list
                 saved_artist.addArtist(sa);
                 Toast.makeText(getBaseContext(), "" + sa.getArtistName() + " is added.", Toast.LENGTH_SHORT).show();
-                saveDataToText();
+
                 // hide the add button once user clicks it
                 add_button.setVisibility(View.GONE);
                 Intent search_intent = new Intent(individual_artist_activity.this, main_activity.class);
@@ -142,7 +134,7 @@ public class individual_artist_activity extends AppCompatActivity {
                 // add to list
                 saved_artist.deleteArtist(sa);
                 Toast.makeText(getBaseContext(), "" + sa.getArtistName() +" is deleted", Toast.LENGTH_SHORT).show();
-                saveDataToText();
+
                 // hide the add button once user clicks it
                 delete_button.setVisibility(View.GONE);
                 Intent search_intent = new Intent(individual_artist_activity.this, artist_list_activity.class);
@@ -151,36 +143,5 @@ public class individual_artist_activity extends AppCompatActivity {
             }
         });
 
-    }
-
-    public void saveDataToText(){
-        try {
-            FileOutputStream os = openFileOutput("SavedArtist.txt", MODE_PRIVATE);
-            ObjectOutputStream output = new ObjectOutputStream(os);
-            output.writeObject(saved_artist.savedArtists);
-            output.close();
-        }
-        catch (java.io.IOException e) {
-            //do something if an IOException occurs.
-            System.out.println("ERROR"); //temporary
-        }
-    }
-
-    //grabs persisting data and updates the savedArtist Data
-    public void grabDataFromFile(){
-        try{
-
-            String file_name = "SavedArtist.txt";
-            FileInputStream inputStream = openFileInput("SavedArtist.txt");
-            ObjectInputStream objStream = new ObjectInputStream(inputStream);
-            saved_artist.savedArtists = (ArrayList<saved_artist>) objStream.readObject();
-
-            inputStream.close();
-
-
-
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
     }
 }
