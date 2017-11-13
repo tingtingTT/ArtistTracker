@@ -20,52 +20,36 @@
         app:srcCompat="@drawable/artist" />
 
     <TextView
-        android:id="@+id/concert_info"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginBottom="10dp"
-        android:text="TextView"
-        android:textColor="@color/White"
-        app:layout_constraintBottom_toTopOf="@+id/album_info"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/artist_info" />
-
-    <TextView
-        android:id="@+id/album_info"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginBottom="18dp"
-        android:gravity="center"
-        android:text="TextView"
-        android:textColor="@color/White"
-        app:layout_constraintBottom_toTopOf="@+id/add"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/concert_info" />
-
-    <TextView
         android:id="@+id/artist_info"
         android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginBottom="7dp"
+        android:layout_height="281dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
         android:gravity="center"
+        android:maxLines="25"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:scrollbars="vertical"
         android:text="TextView"
-        android:textColor="@color/White"
-        app:layout_constraintBottom_toTopOf="@+id/concert_info"
+        android:textColor="#FFFF00"
+        android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/artist_name" />
 
     <TextView
         android:id="@+id/artist_name"
+        android:textStyle="bold"
         android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:autoText="false"
+        android:layout_height="42dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
         android:gravity="center"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
         android:text="TextView"
-        android:textColor="@color/White"
-        android:textSize="30sp"
+        android:textColor="#FFFF00"
+        android:textSize="28sp"
         app:layout_constraintBottom_toTopOf="@+id/artist_info"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -74,19 +58,23 @@
     <Button
         android:id="@+id/add"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_height="59dp"
+        android:background="@drawable/custom_button_round_rect_border"
         android:text="@string/add"
         android:textAllCaps="false"
+        android:textColor="#FFFF00"
+        android:textSize="24sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/album_info" />
+        app:layout_constraintStart_toStartOf="parent" />
 
     <Button
         android:id="@+id/delete"
+        android:textColor="#FFFF00"
+        android:textSize="24sp"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="11dp"
+        android:layout_height="59dp"
+        android:background="@drawable/custom_button_round_rect_border"
         android:text="@string/delete"
         android:textAllCaps="false"
         app:layout_constraintBottom_toBottomOf="@+id/add"

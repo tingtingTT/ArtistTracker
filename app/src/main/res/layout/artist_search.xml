@@ -16,12 +16,15 @@
 
     <SearchView
         android:id="@+id/search_view"
+        android:icon="@drawable/icon"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:clipToPadding="false"
         android:iconifiedByDefault="false"
         android:queryHint="@string/search_artist_hint"
-        android:textColor="@color/White" />
+        android:textColor="#FFFF00" >
+
+    </SearchView>
 
     <ListView
         android:id="@+id/search_results"

@@ -16,7 +16,7 @@
         android:layout_width="wrap_content"
         android:layout_height="438dp"
         android:scrollbars="vertical"
-        android:textColor="@color/White"
+        android:textColor="#FFFF00"
         tools:layout_editor_absoluteX="16dp"
         tools:layout_editor_absoluteY="16dp" />
 

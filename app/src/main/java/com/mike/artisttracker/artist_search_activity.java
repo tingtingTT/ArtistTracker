@@ -1,12 +1,7 @@
 package com.mike.artisttracker;
 
-import android.app.Activity;
 import android.content.Intent;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.graphics.Color;
-import android.graphics.drawable.ColorDrawable;
-import android.graphics.drawable.Drawable;
 import android.os.StrictMode;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -15,7 +10,6 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.SearchView;
@@ -28,8 +22,6 @@ import de.umass.lastfm.ImageSize;
 //import android.support.v7.widget.SearchView;
 
 
-
-import static com.mike.artisttracker.saved_artist.savedArtists;
 import static de.umass.lastfm.Artist.getInfo;
 import static de.umass.lastfm.Artist.search;
 
@@ -81,9 +73,9 @@ public class artist_search_activity extends AppCompatActivity implements SearchV
                 .getResources()
                 .getIdentifier("android:id/search_src_text", null, null);
         TextView textView = (TextView) search_view_artists.findViewById(id);
-        textView.setTextColor(Color.WHITE);
+        textView.setTextColor(Color.YELLOW);
 //        search_view_artists.setQueryHint("Search artist");
-        search_view_artists.setQueryHint(Html.fromHtml("<font color = #ffffff>" + getResources().getString(R.string.search_hint) + "</font>"));
+        search_view_artists.setQueryHint(Html.fromHtml("<font color = #FFFF00>" + getResources().getString(R.string.search_hint) + "</font>"));
         search_view_artists.setOnQueryTextListener(this);
 
     }
