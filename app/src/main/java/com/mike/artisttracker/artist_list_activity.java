@@ -131,6 +131,9 @@ public class artist_list_activity extends AppCompatActivity {
     }
     @Override
     public void onBackPressed() {
-        startActivity(new Intent(this, main_activity.class));
+        Intent it = new Intent(this, main_activity.class);
+        it.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        startActivity(it);
+        finish();
     }
 }

@@ -169,12 +169,18 @@ public class individual_artist_activity extends AppCompatActivity {
     public void onBackPressed() {
         if(add == 0)
         {
-            startActivity(new Intent(this, artist_list_activity.class));
+
+            Intent it = new Intent(this, artist_list_activity.class);
+            it.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+            startActivity(it);
+            finish();
         }
         else
         {
-            startActivity(new Intent(this, artist_search_activity.class));
-        }
+            Intent it = new Intent(this, artist_search_activity.class);
+            it.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+            startActivity(it);
+            finish();        }
     }
 
     public void saveDataToText(){

@@ -77,6 +77,10 @@ public class main_activity extends AppCompatActivity implements View.OnClickList
         background.setImageBitmap(background_bmp);
 
         init_layout();
+        if (getIntent().getBooleanExtra("CLOSEAPP", false)) {
+            // Now close the MainActivity
+            finish();
+        }
 
     }
     @Override
@@ -145,6 +149,12 @@ public class main_activity extends AppCompatActivity implements View.OnClickList
     }
     @Override
     public void onBackPressed() {
+        Intent intent = new Intent(main_activity.this, main_activity.class);
+        // Clear other activities
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
+        intent.addFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
+        intent.putExtra("CLOSEAPP", true);
+        startActivity(intent);
         finish();
     }
 }
