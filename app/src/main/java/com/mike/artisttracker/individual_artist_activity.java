@@ -59,9 +59,9 @@ public class individual_artist_activity extends AppCompatActivity {
         artist_info.setMovementMethod(new ScrollingMovementMethod());
 //        concert_info.setText(sa.getArtistMBID());
 //        album_info.setText("");
-        artist_info.append("\n");
-        artist_info.append(sa.getArtistMBID());
-        artist_info.append("\n \n Album Info:");
+//        artist_info.append("\n");
+//        artist_info.append(sa.getArtistMBID());
+//        artist_info.append("\n \n Album Info:");
 
     }
 
