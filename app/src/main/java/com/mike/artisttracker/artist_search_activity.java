@@ -55,20 +55,6 @@ public class artist_search_activity extends AppCompatActivity implements SearchV
     public void init_layout()
     {
 
-        // init button by id
-        /*confirm_search_single_artist_button = (Button)findViewById(R.id.confirm_search_single_artist_button);
-
-        // user clicks search this selected artist
-        confirm_search_single_artist_button.setOnClickListener(new View.OnClickListener()
-        {A
-            @Override
-            public void onClick(View v)
-            {
-                Intent intent = new Intent(artist_search_activity.this, individual_artist_activity.class);
-                startActivity(intent);
-            }
-        });*/
-
     }
 
     @Override

@@ -84,6 +84,7 @@ public class saved_artist implements Serializable{
             if(artists.getArtistMBID().equals(specificArtist.getArtistMBID())){
                 artists.top_albums = null; // to fix - java.util.ConcurrentModificationException
                 savedArtists.remove(artists);
+                break;
             }
         }
     }

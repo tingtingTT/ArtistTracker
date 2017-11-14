@@ -25,10 +25,6 @@ public class album_activity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.album);
-        // set background blur
-        ImageView background = (ImageView)findViewById(R.id.album_background);
-        Bitmap background_bmp = blur_bitmap.blur_image(this, BitmapFactory.decodeResource(getResources(), R.drawable.album));
-        background.setImageBitmap(background_bmp);
 
         ListView album_list_view =(ListView)findViewById(R.id.saved_album_list_view);
         for(saved_artist artist: savedArtists) {
@@ -48,8 +44,6 @@ public class album_activity extends AppCompatActivity {
 
         adapter = new ArrayAdapter<String>(album_activity.this,R.layout.artist_list_detail, saved_album_names);
         album_list_view.setAdapter(adapter);
-
-        //registerForContextMenu(album_list_view);
 
     }
 }

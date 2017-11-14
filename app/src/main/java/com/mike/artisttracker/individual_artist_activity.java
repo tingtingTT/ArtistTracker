@@ -116,8 +116,8 @@ public class individual_artist_activity extends AppCompatActivity {
             add_button.setVisibility(View.GONE);
             Log.d("add", "Using delete button");
             // delete from the list
-            savedArtists.remove(sa);
-            saveDataToText();
+//            savedArtists.remove(sa);
+//            saveDataToText();
         }
 
         // call before setContentView?
