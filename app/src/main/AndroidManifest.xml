@@ -11,6 +11,8 @@
         android:allowBackup="true"
         android:icon="@drawable/app"
         android:label="@string/app_name"
+        android:hardwareAccelerated="false"
+        android:largeHeap="true"
         android:roundIcon="@drawable/app"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
@@ -24,11 +26,16 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".album_activity" />
-        <activity android:name=".concert_activity" />
-        <activity android:name=".artist_list_activity" />
-        <activity android:name=".artist_search_activity" />
-        <activity android:name=".individual_artist_activity"></activity>
+        <activity android:name=".album_activity"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".concert_activity"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".artist_list_activity"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".artist_search_activity"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".individual_artist_activity"
+            android:theme="@style/AppTheme.NoActionBar" ></activity>
     </application>
 
 </manifest>
