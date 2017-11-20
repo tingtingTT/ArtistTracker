@@ -1,3 +1,6 @@
+/*******************************************
+ * Activity for concert for saved artists
+ ******************************************/
 package com.mike.artisttracker;
 
 import android.graphics.Bitmap;
@@ -13,9 +16,8 @@ public class concert_activity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.concert);
         // set background blur
-        ImageView background = (ImageView)findViewById(R.id.concert_background);
+        ImageView background = findViewById(R.id.concert_background);
         Bitmap background_bmp = blur_bitmap.blur_image(this, BitmapFactory.decodeResource(getResources(), R.drawable.concert));
         background.setImageBitmap(background_bmp);
-
     }
 }

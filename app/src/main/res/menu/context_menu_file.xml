@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:android="http://schemas.android.com/apk/res/android">
-
-    <item android:title="Delete"
-        android:iconTint="@color/Red"
-        android:id="@+id/delete_artist" />
+<menu xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    android:itemTextColor="@color/Yellow"
+    <item
+        android:id="@+id/delete_artist"
+        android:textColor="@color/YellowGreen"
+        android:title="@string/delete" />
 </menu>
