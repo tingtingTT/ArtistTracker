@@ -97,7 +97,7 @@ public class artist_list_activity extends AppCompatActivity {
 
     public void saveDataToText(){
         try {
-            FileOutputStream os = openFileOutput("SavedArtist.txt", MODE_PRIVATE);
+            FileOutputStream os = openFileOutput("SavedArtists.txt", MODE_PRIVATE);
             ObjectOutputStream output = new ObjectOutputStream(os);
             output.writeObject(saved_artist.savedArtists);
             output.close();
