@@ -4,6 +4,7 @@
  ****************************************************/
 package com.mike.artisttracker;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.ArrayAdapter;
@@ -40,5 +41,13 @@ public class album_activity extends AppCompatActivity {
 
         adapter = new ArrayAdapter<>(album_activity.this,R.layout.artist_list_detail, saved_album_names);
         album_list_view.setAdapter(adapter);
+    }
+
+    @Override
+    public void onBackPressed() {
+        Intent it = new Intent(this, main_activity.class);
+        it.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        startActivity(it);
+        finish();
     }
 }
