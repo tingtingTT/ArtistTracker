@@ -1,23 +1,17 @@
+/*******************************************
+ * Activity for saved artist object
+ *****************************************/
 package com.mike.artisttracker;
-
-/**
- * Created by Kyle Batross on 10/25/2017.
- */
 
 import android.content.Context;
 import android.os.StrictMode;
-import android.view.View;
-import android.widget.Toast;
-
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
-import java.io.OutputStreamWriter;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collection;
-
 import de.umass.lastfm.Album;
 import de.umass.lastfm.Event;
 import de.umass.lastfm.Image;
@@ -39,14 +33,11 @@ public class saved_artist implements Serializable{
     private String artist_image;
     private PaginatedResult<Event> artist_events; //Concerts
     private Collection<Album> top_albums; //for info
-    private Album upcomingAlbum;
 
     public saved_artist(String name, String mbid){
         artist_name = name;
         artist_mbid = mbid;
         top_albums = null;
-        //top_albums = updateArtistTopAlbums(name); // API CALL
-        //artist_events = updateArtistEvents(mbid); // API CALL
     }
 
     public void setArtistName(String name){
@@ -73,12 +64,12 @@ public class saved_artist implements Serializable{
     public PaginatedResult<Event> getArtistsEvents(){ return artist_events; }
 
     public Album getUpcomingAlbum(){
-        //to be figured out
-        //this is for Albums that haven't came out yet
+        // to be figured out
+        // this is for Albums that haven't came out yet
         return null;
     }
 
-    //check for artist with Name and MBID, if found - remove from arrayList
+    // check for artist with Name and MBID, if found - remove from arrayList
     public static void deleteArtist(saved_artist specificArtist){
         for (saved_artist artists : savedArtists) {
             if(artists.getArtistMBID().equals(specificArtist.getArtistMBID())){
@@ -109,13 +100,12 @@ public class saved_artist implements Serializable{
     //makes API call for events, unparsed
     public PaginatedResult<Event> updateArtistEvents(String mbid){
         StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
-
         StrictMode.setThreadPolicy(policy);
         PaginatedResult<Event> events = getEvents(mbid, api_key);
         return events;
     }
 
-    //makes api call for images, unparesed
+    // makes api call for images, unparesed
     public void updateArtistImage(String mbid){
         StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
 
@@ -123,7 +113,7 @@ public class saved_artist implements Serializable{
         PaginatedResult<Image> artist_image = getImages(mbid, api_key);
         artist_image = artist_image;
     }
-    //makes api call for albums ,unparsed
+    // makes api call for albums ,unparsed
     public Collection<Album> updateArtistTopAlbums(String name){
         StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
 
@@ -132,9 +122,9 @@ public class saved_artist implements Serializable{
         return top_albums;
     }
 
-    //saves savedArtists to textfile for persisting data
-    //need to pass a context to use openFileOutput - use getApplicationContext() I think? will test
-    //just a template, PLEASE DO NOT USE THIS FUNCTION
+    // saves savedArtists to textfile for persisting data
+    // need to pass a context to use openFileOutput - use getApplicationContext() I think? will test
+    // just a template, PLEASE DO NOT USE THIS FUNCTION
     public static void saveDataToText(Context context){
         try {
             FileOutputStream os = context.openFileOutput("SavedArtists.txt", MODE_PRIVATE);
@@ -154,17 +144,13 @@ public class saved_artist implements Serializable{
         try{
 
             String file_name = "SavedArtists.txt";
-            FileInputStream inputStream = context.openFileInput("SavedArtist.txt");
+            FileInputStream inputStream = context.openFileInput(file_name);
             ObjectInputStream objStream = new ObjectInputStream(inputStream);
             savedArtists = (ArrayList<saved_artist>) objStream.readObject();
 
             inputStream.close();
-
-
-
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
-
 }
