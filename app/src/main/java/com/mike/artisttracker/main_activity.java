@@ -26,6 +26,7 @@ import android.view.View;
 import android.widget.Button;
 import android.support.design.widget.FloatingActionButton;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
@@ -70,19 +71,21 @@ public class main_activity extends AppCompatActivity implements View.OnClickList
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
-        grabDataFromFile();
         // set background blur
         ImageView background = (ImageView)findViewById(R.id.backgroud_image_view);
         Bitmap background_bmp = blur_bitmap.blur_image(this, BitmapFactory.decodeResource(getResources(), R.drawable.main));
         background.setImageBitmap(background_bmp);
 
         init_layout();
+
+
         if (getIntent().getBooleanExtra("CLOSEAPP", false)) {
             // Now close the MainActivity
             finish();
         }
 
     }
+
     @Override
     public void onClick(View view) {
 
@@ -115,38 +118,6 @@ public class main_activity extends AppCompatActivity implements View.OnClickList
         }
     }
 
-
-
-    public void saveDataToText(){
-        try {
-            FileOutputStream os = openFileOutput("SavedArtists.txt", MODE_PRIVATE);
-            ObjectOutputStream output = new ObjectOutputStream(os);
-            output.writeObject(saved_artist.savedArtists);
-            output.close();
-        }
-        catch (java.io.IOException e) {
-            //do something if an IOException occurs.
-            System.out.println("ERROR"); //temporary
-        }
-    }
-
-    //grabs persisting data and updates the savedArtist Data
-    public void grabDataFromFile(){
-        try{
-
-            String file_name = "SavedArtists.txt";
-            FileInputStream inputStream = openFileInput("SavedArtists.txt");
-            ObjectInputStream objStream = new ObjectInputStream(inputStream);
-            saved_artist.savedArtists = (ArrayList<saved_artist>) objStream.readObject();
-
-            inputStream.close();
-
-
-
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
     @Override
     public void onBackPressed() {
         Intent intent = new Intent(main_activity.this, main_activity.class);
