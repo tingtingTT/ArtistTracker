@@ -23,11 +23,7 @@ import android.view.View;
 import android.widget.Button;
 import android.support.design.widget.FloatingActionButton;
 import android.widget.ImageView;
-<<<<<<< HEAD
 import android.widget.Toast;
-
-=======
->>>>>>> master
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.ObjectInputStream;
