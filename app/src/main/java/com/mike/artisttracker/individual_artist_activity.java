@@ -1,3 +1,7 @@
+/*************************************************************
+ * Individual artist activity
+ * Showing info for the artist and have add, delete functions
+ *************************************************************/
 package com.mike.artisttracker;
 
 import android.content.Intent;
@@ -10,59 +14,36 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
-import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
-
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 
-import static android.widget.Toast.*;
-import static com.mike.artisttracker.saved_artist.savedArtists;
-
 
 public class individual_artist_activity extends AppCompatActivity {
-
     public TextView artist_name;
     public TextView artist_info;
-    public TextView concert_info;
-    public TextView album_info;
     public ImageView artistImage;
     public saved_artist sa;
     public int add;
 
-
-
-
     public void init_layout(saved_artist sa) {
 
-        artistImage = (ImageView)findViewById(R.id.artist_image);
-        ImageView background = (ImageView)findViewById(R.id.individual_artist);
+        artistImage = findViewById(R.id.artist_image);
+        ImageView background = findViewById(R.id.individual_artist);
         Bitmap background_bmp = blur_bitmap.blur_image(this, BitmapFactory.decodeResource(getResources(), R.drawable.artist));
         background.setImageBitmap(background_bmp);
 
-        artist_name = (TextView) findViewById(R.id.artist_name);
-        artist_info = (TextView) findViewById(R.id.artist_info);
-//        concert_info = (TextView) findViewById(R.id.concert_info);
-//        album_info = (TextView) findViewById(R.id.album_info);
-
-
-        // call setText Before setContentView ?
+        artist_name = findViewById(R.id.artist_name);
+        artist_info = findViewById(R.id.artist_info);
         artist_name.setText(sa.getArtistName());
         artist_info.setText(sa.getArtistInfo());
         artist_info.setMovementMethod(new ScrollingMovementMethod());
-//        concert_info.setText(sa.getArtistMBID());
-//        album_info.setText("");
-//        artist_info.append("\n");
-//        artist_info.append(sa.getArtistMBID());
-//        artist_info.append("\n \n Album Info:");
-
     }
 
     // Gets artist object from bundle
@@ -91,9 +72,8 @@ public class individual_artist_activity extends AppCompatActivity {
         ImageLoader.getInstance().init(config);
         ImageLoader imageLoader = ImageLoader.getInstance();
 
-
-        final Button add_button = (Button)findViewById(R.id.add);
-        final Button delete_button = (Button)findViewById(R.id.delete);
+        final Button add_button = findViewById(R.id.add);
+        final Button delete_button = findViewById(R.id.delete);
 
         // todo perhaps checking if sa is in savedArtist collection instead?
         int isAdd = getIntent().getIntExtra("add", 0);
@@ -105,23 +85,13 @@ public class individual_artist_activity extends AppCompatActivity {
         {
             add_button.setVisibility(View.VISIBLE);
             delete_button.setVisibility(View.GONE);
-            Log.d("add", "Using add button");
-
-
         }
         // otherwise hide add button, show delete button
         else
         {
             delete_button.setVisibility(View.VISIBLE);
             add_button.setVisibility(View.GONE);
-            Log.d("add", "Using delete button");
-            // delete from the list
-//            savedArtists.remove(sa);
-//            saveDataToText();
         }
-
-        // call before setContentView?
-        // get_artist();
         parse_concert_data();
         init_layout(sa);
         imageLoader.displayImage(sa.getArtist_image(), artistImage);
@@ -157,20 +127,12 @@ public class individual_artist_activity extends AppCompatActivity {
 
             }
         });
-
     }
-//may be useful
-//    @Override
-//    protected void onResume() {
-//        super.onResume();
-//        grabDataFromFile();
-//    }
 
     @Override
     public void onBackPressed() {
         if(add == 0)
         {
-
             Intent it = new Intent(this, artist_list_activity.class);
             it.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
             startActivity(it);
