@@ -68,7 +68,7 @@ public class artist_list_activity extends AppCompatActivity {
                 saved_artist.deleteArtist(artist_to_delete);
                 Toast.makeText(getBaseContext(), "" + artist_to_delete.getArtistName() +" is deleted", Toast.LENGTH_SHORT).show();
                 saved_artist_names.remove(obj.position);
-                saveDataToText();
+                saveAccountsToFile();
                 adapter.notifyDataSetChanged();
                 break;
         }
@@ -90,15 +90,21 @@ public class artist_list_activity extends AppCompatActivity {
         startActivity(i);
     }
 
-    public void saveDataToText(){
+    // This method will load all user accounts from file
+    public void saveAccountsToFile(){
         try {
-            FileOutputStream os = openFileOutput("SavedArtists.txt", MODE_PRIVATE);
+            Toast.makeText(getBaseContext(), "Attempting to save updated account list" , Toast.LENGTH_SHORT).show();
+
+            user_account.update_user_account();
+
+            FileOutputStream os = openFileOutput("SavedAccounts.txt", MODE_PRIVATE);
             ObjectOutputStream output = new ObjectOutputStream(os);
-            output.writeObject(saved_artist.savedArtists);
+            output.writeObject(user_account.saved_Accounts);
             output.close();
         }
         catch (java.io.IOException e) {
             //do something if an IOException occurs.
+            Toast.makeText(getBaseContext(), "Saving account failed" , Toast.LENGTH_SHORT).show();
             System.out.println("ERROR"); //temporary
         }
     }

@@ -103,7 +103,7 @@ public class individual_artist_activity extends AppCompatActivity {
                 // add to list
                 saved_artist.addArtist(sa);
                 Toast.makeText(getBaseContext(), "" + sa.getArtistName() + " is added.", Toast.LENGTH_SHORT).show();
-                saveDataToText();
+                saveAccountsToFile();
                 // hide the add button once user clicks it
                 add_button.setVisibility(View.GONE);
                 Intent search_intent = new Intent(individual_artist_activity.this, main_activity.class);
@@ -118,7 +118,8 @@ public class individual_artist_activity extends AppCompatActivity {
                 // add to list
                 saved_artist.deleteArtist(sa);
                 Toast.makeText(getBaseContext(), "" + sa.getArtistName() +" is deleted", Toast.LENGTH_SHORT).show();
-                saveDataToText();
+                // saveDataToText(); old save
+                saveAccountsToFile(); // New Save
                 // hide the add button once user clicks it
                 delete_button.setVisibility(View.GONE);
                 Intent search_intent = new Intent(individual_artist_activity.this, artist_list_activity.class);
@@ -145,16 +146,20 @@ public class individual_artist_activity extends AppCompatActivity {
             finish();        }
     }
 
-    public void saveDataToText(){
+    // This method will save all user accounts to file
+    public void saveAccountsToFile(){
         try {
-            FileOutputStream os = openFileOutput("SavedArtists.txt", MODE_PRIVATE);
+            user_account.update_user_account();
+            FileOutputStream os = openFileOutput("SavedAccounts.txt", MODE_PRIVATE);
             ObjectOutputStream output = new ObjectOutputStream(os);
-            output.writeObject(saved_artist.savedArtists);
+            output.writeObject(user_account.saved_Accounts);
             output.close();
         }
         catch (java.io.IOException e) {
             //do something if an IOException occurs.
+            Toast.makeText(getBaseContext(), "Saving account failed" , Toast.LENGTH_SHORT).show();
             System.out.println("ERROR"); //temporary
         }
     }
+
 }
