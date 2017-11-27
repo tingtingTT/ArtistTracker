@@ -97,7 +97,7 @@ public class artist_list_activity extends AppCompatActivity {
 
             user_account.update_user_account();
 
-            FileOutputStream os = openFileOutput("SavedAccounts.txt", MODE_PRIVATE);
+            FileOutputStream os = openFileOutput("SavedAccount.txt", MODE_PRIVATE);
             ObjectOutputStream output = new ObjectOutputStream(os);
             output.writeObject(user_account.saved_Accounts);
             output.close();

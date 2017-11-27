@@ -26,6 +26,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".main_activity"
+            android:theme="@style/AppTheme.NoActionBar"
+            android:noHistory="true"/>
         <activity android:name=".album_activity"
             android:theme="@style/AppTheme.NoActionBar"
             android:noHistory="true"/>
