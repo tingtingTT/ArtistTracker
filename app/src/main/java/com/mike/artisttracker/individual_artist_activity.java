@@ -150,7 +150,7 @@ public class individual_artist_activity extends AppCompatActivity {
     public void saveAccountsToFile(){
         try {
             user_account.update_user_account();
-            FileOutputStream os = openFileOutput("SavedAccounts.txt", MODE_PRIVATE);
+            FileOutputStream os = openFileOutput("SavedAccount.txt", MODE_PRIVATE);
             ObjectOutputStream output = new ObjectOutputStream(os);
             output.writeObject(user_account.saved_Accounts);
             output.close();

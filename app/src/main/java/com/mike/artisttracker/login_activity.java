@@ -36,9 +36,14 @@ public class login_activity extends AppCompatActivity {
         login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                // Load all user accounts
-                grabAccountsFromFile();
-                validate(user_Name.getText().toString(), password.getText().toString());
+                if(user_Name.getText() != null && password.getText() != null){
+                    // Load all user accounts
+                    grabAccountsFromFile();
+                    validate(user_Name.getText().toString(), password.getText().toString());
+                }
+                else{
+                    Toast.makeText(getBaseContext(), "Please enter a valid username and password." , Toast.LENGTH_SHORT).show();
+                }
             }
         });
 
@@ -46,8 +51,14 @@ public class login_activity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Toast.makeText(getBaseContext(), "Create Account clicked" , Toast.LENGTH_SHORT).show();
-                grabAccountsFromFile();
-                createAccount(user_Name.getText().toString(), password.getText().toString());
+                if(user_Name.getText() != null && password.getText() != null){
+                    grabAccountsFromFile();
+                    createAccount(user_Name.getText().toString(), password.getText().toString());
+                }
+                else{
+                    Toast.makeText(getBaseContext(), "Please enter a valid username and password." , Toast.LENGTH_SHORT).show();
+                }
+
             }
         });
     }
@@ -68,7 +79,7 @@ public class login_activity extends AppCompatActivity {
     private void createAccount(String user, String pass){
         // login_new_user will return true if User name is available and account is created
         if(user_account.login_new_user(user,pass)){
-            Toast.makeText(getBaseContext(), "User name is valid, account logged in" , Toast.LENGTH_SHORT).show();
+            Toast.makeText(getBaseContext(), "User name is valid, account created" , Toast.LENGTH_SHORT).show();
             // login was succesfull so launch app
             saveAccountsToFile();
             launchMain();
@@ -83,8 +94,8 @@ public class login_activity extends AppCompatActivity {
     private void grabAccountsFromFile() {
         try{
 
-            String file_name = "SavedAccounts.txt";
-            FileInputStream inputStream = openFileInput("SavedAccounts.txt");
+            String file_name = "SavedAccount.txt";
+            FileInputStream inputStream = openFileInput("SavedAccount.txt");
             ObjectInputStream objStream = new ObjectInputStream(inputStream);
             user_account.saved_Accounts = (ArrayList<user_account>) objStream.readObject();
             inputStream.close();
@@ -98,7 +109,7 @@ public class login_activity extends AppCompatActivity {
     // This method will save user accounts to file
     public void saveAccountsToFile(){
         try {
-            FileOutputStream os = openFileOutput("SavedAccounts.txt", MODE_PRIVATE);
+            FileOutputStream os = openFileOutput("SavedAccount.txt", MODE_PRIVATE);
             ObjectOutputStream output = new ObjectOutputStream(os);
             output.writeObject(user_account.saved_Accounts);
             output.close();
