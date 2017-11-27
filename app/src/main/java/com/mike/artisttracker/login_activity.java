@@ -36,7 +36,9 @@ public class login_activity extends AppCompatActivity {
         login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(user_Name.getText() != null && password.getText() != null){
+
+               // if(user_Name.getText().toString().equals("") || password.getText().toString() == null){
+                if(( user_Name.getText().toString().length() != 0) || ( password.getText().toString().length() != 0) ){
                     // Load all user accounts
                     grabAccountsFromFile();
                     validate(user_Name.getText().toString(), password.getText().toString());
@@ -50,8 +52,7 @@ public class login_activity extends AppCompatActivity {
         create_account.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(getBaseContext(), "Create Account clicked" , Toast.LENGTH_SHORT).show();
-                if(user_Name.getText() != null && password.getText() != null){
+                if(( user_Name.getText().toString().length() != 0) || ( password.getText().toString().length() != 0) ){
                     grabAccountsFromFile();
                     createAccount(user_Name.getText().toString(), password.getText().toString());
                 }
@@ -71,7 +72,7 @@ public class login_activity extends AppCompatActivity {
             launchMain();
         }
         else{
-            Toast.makeText(getBaseContext(), "Login failed. Please enter valid username and password." , Toast.LENGTH_SHORT).show();
+            Toast.makeText(getBaseContext(), "Login failed. Username and password don't match an existing account." , Toast.LENGTH_SHORT).show();
         }
     }
 
@@ -123,7 +124,7 @@ public class login_activity extends AppCompatActivity {
 
     private void launchMain() {
         Intent intent = new Intent(login_activity.this, main_activity.class);
-        Toast.makeText(getBaseContext(), "Logged in as: "+ user_account.getCurrent_username(), Toast.LENGTH_SHORT).show();
+        Toast.makeText(getBaseContext(), "Logged in as: '"+ user_account.getCurrent_username() + "'", Toast.LENGTH_SHORT).show();
         startActivity(intent);
     }
 }
