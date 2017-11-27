@@ -11,6 +11,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.content.Intent;
 
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
@@ -268,7 +269,6 @@ public class album_activity extends AppCompatActivity {
         album_list_view.setAdapter(adapter);
     }
 
-
     public void saveDataToText(){
         try {
             FileOutputStream os = openFileOutput("SavedArtists.txt", MODE_PRIVATE);
@@ -299,4 +299,11 @@ public class album_activity extends AppCompatActivity {
             e.printStackTrace();
         }
     }
+
+    @Override
+    public void onBackPressed() {
+        Intent it = new Intent(this, main_activity.class);
+        it.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        startActivity(it);
+        finish();}
 }
