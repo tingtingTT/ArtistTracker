@@ -33,6 +33,7 @@ public class saved_artist implements Serializable{
     private String artist_image;
     private PaginatedResult<Event> artist_events; //Concerts
     private Collection<Album> top_albums; //for info
+    private String upcomingAlbum;
 
     public saved_artist(String name, String mbid){
         artist_name = name;
@@ -63,13 +64,16 @@ public class saved_artist implements Serializable{
     public Collection<Album> getArtistTopAlbums(){ return top_albums; }
     public PaginatedResult<Event> getArtistsEvents(){ return artist_events; }
 
-    public Album getUpcomingAlbum(){
-        // to be figured out
-        // this is for Albums that haven't came out yet
-        return null;
+    public String getUpcomingAlbum(){
+        //to be figured out
+        //this is for Albums that haven't came out yet
+        return upcomingAlbum;
     }
 
-    // check for artist with Name and MBID, if found - remove from arrayList
+    public void setUpcomingAlbum(String upcoming_album){
+        upcomingAlbum += upcoming_album + "\n";
+    }
+    //check for artist with Name and MBID, if found - remove from arrayList
     public static void deleteArtist(saved_artist specificArtist){
         for (saved_artist artists : savedArtists) {
             if(artists.getArtistMBID().equals(specificArtist.getArtistMBID())){
@@ -144,7 +148,7 @@ public class saved_artist implements Serializable{
         try{
 
             String file_name = "SavedArtists.txt";
-            FileInputStream inputStream = context.openFileInput(file_name);
+            FileInputStream inputStream = context.openFileInput("SavedArtists.txt");
             ObjectInputStream objStream = new ObjectInputStream(inputStream);
             savedArtists = (ArrayList<saved_artist>) objStream.readObject();
 
