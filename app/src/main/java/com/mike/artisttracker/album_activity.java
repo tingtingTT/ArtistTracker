@@ -1,3 +1,7 @@
+/*****************************************************
+ * get upcoming albums info for saved artist.
+ * Using Google API for searching upcoming albums for artists
+ ****************************************************/
 package com.mike.artisttracker;
 
 import android.graphics.Bitmap;
@@ -6,7 +10,6 @@ import android.os.StrictMode;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.ArrayAdapter;
-import android.widget.ImageView;
 import android.widget.ListView;
 
 import java.io.FileInputStream;
@@ -36,17 +39,16 @@ import java.util.Locale;
 
 
 public class album_activity extends AppCompatActivity {
-
-    private String api_key = "44ce572665909f50a88232d35e667812";
     ArrayList<String> saved_album_names = new ArrayList<>();
     ArrayAdapter<String> adapter;
-
+    private String api_key = "44ce572665909f50a88232d35e667812";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.album);
 
+<<<<<<< HEAD
         StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
         StrictMode.setThreadPolicy(policy);
 
@@ -67,6 +69,9 @@ public class album_activity extends AppCompatActivity {
             albums_dates = upcoming_albums_list.select("tr.module");
 
         }
+=======
+        ListView album_list_view = findViewById(R.id.saved_album_list_view);
+>>>>>>> master
         for(saved_artist artist: savedArtists) {
             Caller.getInstance().setCache(null);
             Caller.getInstance().setUserAgent("tst");
@@ -159,6 +164,7 @@ public class album_activity extends AppCompatActivity {
                 }
         }
 
+<<<<<<< HEAD
 
 //                Document album_doc = Jsoup.connect("http://google.com/search?q=" + "new album" + " " + artist_name).get();
 //                Elements album_ele = album_doc.getElementsByClass("_XWk");
@@ -264,8 +270,10 @@ public class album_activity extends AppCompatActivity {
 
 
         adapter = new ArrayAdapter<String>(album_activity.this,R.layout.artist_list_detail, saved_album_names);
+=======
+        adapter = new ArrayAdapter<>(album_activity.this,R.layout.artist_list_detail, saved_album_names);
+>>>>>>> master
         album_list_view.setAdapter(adapter);
-
     }
 
 

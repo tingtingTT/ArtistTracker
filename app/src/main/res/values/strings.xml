@@ -11,8 +11,8 @@
     <string name="dummy_text_2">Upcoming concerts</string>
     <string name="dummy_text_3">All info for this artist</string>
     <string name="save">Save</string>
-    <string name="delete">Delete</string>
     <string name="background">Main background image</string>
     <string name="add">Add</string>
     <string name="search_hint">Search artist:\u0020</string>
+    <string name="delete">Delete</string>
 </resources>
