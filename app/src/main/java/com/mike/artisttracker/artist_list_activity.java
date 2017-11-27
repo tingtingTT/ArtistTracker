@@ -1,8 +1,9 @@
+/*****************************************
+ * Display a list of saved artists for user
+ ****************************************/
 package com.mike.artisttracker;
 
 import android.content.Intent;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.ContextMenu;
@@ -11,20 +12,14 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.Toast;
-
-import java.io.FileInputStream;
 import java.io.FileOutputStream;
-import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.util.ArrayList;
-
 import static com.mike.artisttracker.saved_artist.savedArtists;
 
 public class artist_list_activity extends AppCompatActivity {
-
     ArrayList<String> saved_artist_names = new ArrayList<>();
     ArrayAdapter<String> adapter;
 
@@ -33,13 +28,13 @@ public class artist_list_activity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.artist_list);
         // Get the reference of entries
-        ListView artist_list_view =(ListView)findViewById(R.id.saved_artist_list_view);
+        ListView artist_list_view = findViewById(R.id.saved_artist_list_view);
 
         for(saved_artist artist: savedArtists){
             saved_artist_names.add(artist.getArtistName());
         }
 
-        adapter = new ArrayAdapter<String>(artist_list_activity.this,R.layout.artist_list_detail, saved_artist_names);
+        adapter = new ArrayAdapter<>(artist_list_activity.this,R.layout.artist_list_detail, saved_artist_names);
         artist_list_view.setAdapter(adapter);
 
         registerForContextMenu(artist_list_view);
@@ -98,11 +93,15 @@ public class artist_list_activity extends AppCompatActivity {
     // This method will load all user accounts from file
     public void saveAccountsToFile(){
         try {
+<<<<<<< HEAD
             Toast.makeText(getBaseContext(), "Attempting to save updated account list" , Toast.LENGTH_SHORT).show();
 
             user_account.update_user_account();
 
             FileOutputStream os = openFileOutput("SavedAccounts.txt", MODE_PRIVATE);
+=======
+            FileOutputStream os = openFileOutput("SavedArtists.txt", MODE_PRIVATE);
+>>>>>>> master
             ObjectOutputStream output = new ObjectOutputStream(os);
             output.writeObject(user_account.saved_Accounts);
             output.close();
@@ -114,6 +113,29 @@ public class artist_list_activity extends AppCompatActivity {
         }
     }
 
+<<<<<<< HEAD
+=======
+/*****************************************************************
+
+    //grabs persisting data and updates the savedArtist Data
+    public void grabDataFromFile(){
+        try{
+
+            String file_name = "SavedArtists.txt";
+            FileInputStream inputStream = openFileInput("SavedArtists.txt");
+            ObjectInputStream objStream = new ObjectInputStream(inputStream);
+            saved_artist.savedArtists = (ArrayList<saved_artist>) objStream.readObject();
+
+            inputStream.close();
+
+
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+ *****************************************************************/
+>>>>>>> master
     @Override
     public void onBackPressed() {
         Intent it = new Intent(this, main_activity.class);

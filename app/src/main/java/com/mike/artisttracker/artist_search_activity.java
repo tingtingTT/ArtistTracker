@@ -1,3 +1,6 @@
+/***********************************************
+ * Activity for searching artists use lastfm UI
+ ***********************************************/
 package com.mike.artisttracker;
 
 import android.content.Intent;
@@ -9,77 +12,45 @@ import android.text.Html;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.Button;
-import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.SearchView;
 import android.widget.TextView;
 import android.widget.Toast;
-
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 import java.util.Collection;
 import de.umass.lastfm.Artist;
-import de.umass.lastfm.Event;
 import de.umass.lastfm.ImageSize;
-import de.umass.lastfm.PaginatedResult;
-//import android.support.v7.widget.SearchView;
-
-//
-// <<<<<<< HEAD
-// =======
-//
-// import static com.mike.artisttracker.saved_artist.savedArtists;
-// import static de.umass.lastfm.Artist.getEvents;
-// >>>>>>> master
 import static de.umass.lastfm.Artist.getInfo;
 import static de.umass.lastfm.Artist.search;
-import static de.umass.lastfm.Artist.getEvents;
 
 
 public class artist_search_activity extends AppCompatActivity implements SearchView.OnQueryTextListener{
 
-    public Button confirm_search_single_artist_button;
     public SearchView search_view_artists;
     public static ArrayList<String> name_result = new ArrayList<>();
     public static ArrayList<String> url_result = new ArrayList<>();
     public static ArrayList<String> mbid_result = new ArrayList<>();
     public static ArrayList<String> info_result = new ArrayList<>();
-    public static ArrayList<String> album_result = new ArrayList<>();
-    public static ArrayList<String> event_result = new ArrayList<>();
-
-
-    public void init_layout()
-    {
-
-    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.artist_search);
-        init_layout();
 
+        // TODO: see below:
         //https://stackoverflow.com/questions/6343166/how-do-i-fix-android-os-networkonmainthreadexception   - bad idea??? read
         StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
-
         StrictMode.setThreadPolicy(policy);
-
-        search_view_artists = (SearchView) findViewById(R.id.search_view);
+        search_view_artists = findViewById(R.id.search_view);
         int id = search_view_artists.getContext()
                 .getResources()
                 .getIdentifier("android:id/search_src_text", null, null);
-        TextView textView = (TextView) search_view_artists.findViewById(id);
+        TextView textView = search_view_artists.findViewById(id);
         textView.setTextColor(Color.YELLOW);
-//        search_view_artists.setQueryHint("Search artist");
+        //search_view_artists.setQueryHint("Search artist");
         search_view_artists.setQueryHint(Html.fromHtml("<font color = #FFFF00>" + getResources().getString(R.string.search_hint) + "</font>"));
         search_view_artists.setOnQueryTextListener(this);
-
     }
-
 
     public Collection<Artist> getSearchResults(String query){
         return search(query,"44ce572665909f50a88232d35e667812");
@@ -90,15 +61,10 @@ public class artist_search_activity extends AppCompatActivity implements SearchV
         return a;
     }
 
-    public PaginatedResult<Event> getEventResults(String nameOrMBID) {
-        return getEvents(nameOrMBID, "44ce572665909f50a88232d35e667812" );
-    }
-
-
     @Override
     public boolean onQueryTextSubmit(String query) {
         if(query.length() != 0){
-            Collection<Artist> result_artist_list = new ArrayList<>();
+            Collection<Artist> result_artist_list;
             result_artist_list = getSearchResults(query);
             name_result.clear();
             url_result.clear();
@@ -109,11 +75,9 @@ public class artist_search_activity extends AppCompatActivity implements SearchV
                 url_result.add(artists.getUrl());
                 mbid_result.add(artists.getMbid());
                 info_result.add(artists.getWikiText());
-                // TODO: make API call to get album and concert info of the artist
             }
-
-            System.out.println(result_artist_list.toString());
-            final ListView lv = (ListView) findViewById(R.id.search_results);
+//            System.out.println(result_artist_list.toString());
+            final ListView lv = findViewById(R.id.search_results);
             ArrayAdapter<String> adapter = new ArrayAdapter<>(this,R.layout.artist_list_detail,name_result);
             lv.setAdapter(adapter);
             lv.setClickable(true);
@@ -126,13 +90,10 @@ public class artist_search_activity extends AppCompatActivity implements SearchV
                     saved_artist saved_artist = new saved_artist(name_result.get(position), mbid_result.get(position));
                     saved_artist.setArtistURL(url_result.get(position));
                     saved_artist.setArtistInfo(info_result.get(position));
-//                    saved_artist.setArtistEventInfo(saved_artist.updateArtistEvents(saved_artist.getArtistMBID()));
-
                     // When a specific artist is clicked, additional API call is made to get artist info
                     Artist b = getArtistInfoApiCall(saved_artist.getArtistMBID());
                     saved_artist.setArtistInfo(b.getWikiSummary());
                     saved_artist.setArtist_image(b.getImageURL(ImageSize.LARGE));
-
                     transferArtist(saved_artist);
                 }
             });
@@ -148,7 +109,7 @@ public class artist_search_activity extends AppCompatActivity implements SearchV
     }
 
     // Transfers an artist object to individual_artist_activity
-// using intent and serializable
+    // using intent and serializable
     public void transferArtist(saved_artist a) {
         // temp artist used as example
 
@@ -161,7 +122,6 @@ public class artist_search_activity extends AppCompatActivity implements SearchV
         }
         else
             add = 1;
-
         // Puts the saved artist "a" into the bundle using the key "savedKey"
         b.putSerializable("savedKey", a);
         i.putExtras(b);
@@ -169,7 +129,6 @@ public class artist_search_activity extends AppCompatActivity implements SearchV
 
         startActivity(i);
     }
-
 
     @Override
     public void onBackPressed() {
