@@ -48,7 +48,6 @@ public class album_activity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.album);
 
-<<<<<<< HEAD
         StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
         StrictMode.setThreadPolicy(policy);
 
@@ -69,9 +68,6 @@ public class album_activity extends AppCompatActivity {
             albums_dates = upcoming_albums_list.select("tr.module");
 
         }
-=======
-        ListView album_list_view = findViewById(R.id.saved_album_list_view);
->>>>>>> master
         for(saved_artist artist: savedArtists) {
             Caller.getInstance().setCache(null);
             Caller.getInstance().setUserAgent("tst");
@@ -164,7 +160,6 @@ public class album_activity extends AppCompatActivity {
                 }
         }
 
-<<<<<<< HEAD
 
 //                Document album_doc = Jsoup.connect("http://google.com/search?q=" + "new album" + " " + artist_name).get();
 //                Elements album_ele = album_doc.getElementsByClass("_XWk");
@@ -270,9 +265,6 @@ public class album_activity extends AppCompatActivity {
 
 
         adapter = new ArrayAdapter<String>(album_activity.this,R.layout.artist_list_detail, saved_album_names);
-=======
-        adapter = new ArrayAdapter<>(album_activity.this,R.layout.artist_list_detail, saved_album_names);
->>>>>>> master
         album_list_view.setAdapter(adapter);
     }
 
