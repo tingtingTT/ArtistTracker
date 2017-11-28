@@ -38,7 +38,7 @@ public class login_activity extends AppCompatActivity {
             public void onClick(View view) {
 
                // if(user_Name.getText().toString().equals("") || password.getText().toString() == null){
-                if(( user_Name.getText().toString().length() != 0) || ( password.getText().toString().length() != 0) ){
+                if(( user_Name.getText().toString().length() != 0) && ( password.getText().toString().length() != 0) ){
                     // Load all user accounts
                     grabAccountsFromFile();
                     validate(user_Name.getText().toString(), password.getText().toString());
@@ -52,7 +52,7 @@ public class login_activity extends AppCompatActivity {
         create_account.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(( user_Name.getText().toString().length() != 0) || ( password.getText().toString().length() != 0) ){
+                if(( user_Name.getText().toString().length() != 0) && ( password.getText().toString().length() != 0) ){
                     grabAccountsFromFile();
                     createAccount(user_Name.getText().toString(), password.getText().toString());
                 }

@@ -37,6 +37,7 @@ public class main_activity extends AppCompatActivity implements View.OnClickList
     public Button album_button;
     public Button saved_artist_button;
     public FloatingActionButton search_artist_float_button;
+    public FloatingActionButton logout_button;
 
 
     public void init_layout()
@@ -48,12 +49,14 @@ public class main_activity extends AppCompatActivity implements View.OnClickList
         album_button = findViewById(R.id.album_button);
         saved_artist_button = findViewById(R.id.saved_artist_button);
         search_artist_float_button = findViewById(R.id.search_artist_float_button);
+        logout_button = findViewById(R.id.logout_button);
 
         // making these buttons listening/ready to be clicked
         concert_button.setOnClickListener(this);
         album_button.setOnClickListener(this);
         saved_artist_button.setOnClickListener(this);
         search_artist_float_button.setOnClickListener(this);
+        logout_button.setOnClickListener(this);
     }
 
 
@@ -101,6 +104,13 @@ public class main_activity extends AppCompatActivity implements View.OnClickList
             case R.id.search_artist_float_button:
                 Intent search_intent = new Intent(main_activity.this, artist_search_activity.class);
                 startActivity(search_intent);
+                break;
+
+            // user clicks logout button
+            case R.id.logout_button:
+                user_account.reset();
+                Intent logout_intent = new Intent(main_activity.this, login_activity.class);
+                startActivity(logout_intent);
                 break;
         }
     }

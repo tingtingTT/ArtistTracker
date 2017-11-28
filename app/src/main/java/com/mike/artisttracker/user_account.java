@@ -103,4 +103,11 @@ public class user_account implements Serializable{
             }
         }
     }
+
+    public static void reset() {
+        current_username = null;
+        current_password = null;
+        saved_Accounts = null;
+        saved_artist.savedArtists = null;
+    }
 }
