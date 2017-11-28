@@ -22,6 +22,7 @@
         android:clipToPadding="false"
         android:iconifiedByDefault="false"
         android:queryHint="@string/search_artist_hint"
+        android:textColorHint="#FFFF00"
         android:textColor="#FFFF00" >
 
     </SearchView>
