@@ -19,7 +19,7 @@
         app:backgroundTint="#FFFF00"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:srcCompat="@android:drawable/ic_menu_search"
+        app:srcCompat="@drawable/icon"
         tools:layout_constraintBottom_creator="1"
         tools:layout_constraintRight_creator="1" />
 
@@ -105,8 +105,10 @@
         android:layout_marginBottom="16dp"
         android:layout_marginStart="16dp"
         android:clickable="true"
+        android:alpha="0.5"
+        app:backgroundTint="#FFFF00"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:srcCompat="@android:drawable/presence_busy" />
+        app:srcCompat="@drawable/logout" />
 
 </android.support.constraint.ConstraintLayout>
