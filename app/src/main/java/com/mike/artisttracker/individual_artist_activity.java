@@ -7,6 +7,7 @@ package com.mike.artisttracker;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.os.StrictMode;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.method.ScrollingMovementMethod;
@@ -39,6 +40,13 @@ public class individual_artist_activity extends AppCompatActivity {
         Bitmap background_bmp = blur_bitmap.blur_image(this, BitmapFactory.decodeResource(getResources(), R.drawable.artist));
         background.setImageBitmap(background_bmp);
 
+//        StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
+//        StrictMode.setThreadPolicy(policy);
+//
+//        if(sa.getArtistTopAlbums() == null) {
+//            System.out.println(sa.getArtistName());
+//            sa.updateArtistTopAlbums(sa.getArtistName());  //- ADDED SOMEWHERE ELSE TO IMPROVE PERFORMANCE
+//        }
         artist_name = findViewById(R.id.artist_name);
         artist_info = findViewById(R.id.artist_info);
         artist_name.setText(sa.getArtistName());
