@@ -38,7 +38,7 @@ public class artist_search_activity extends AppCompatActivity implements SearchV
         setContentView(R.layout.artist_search);
 
         // TODO: see below:
-        //https://stackoverflow.com/questions/6343166/how-do-i-fix-android-os-networkonmainthreadexception   - bad idea??? read
+        //https://stackoverflow.com/questions/6343166/how-do-i-fix-android-os-networkonmainthreadexception   - bad idea??? read - consider async task
         StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
         StrictMode.setThreadPolicy(policy);
         search_view_artists = findViewById(R.id.search_view);
