@@ -12,7 +12,7 @@
     <ImageView
         android:id="@+id/individual_artist"
         android:layout_width="wrap_content"
-        android:layout_height="569dp"
+        android:layout_height="680dp"
         android:scaleType="centerCrop"
         android:scaleX="-1"
         app:layout_constraintBottom_toBottomOf="@+id/add"
