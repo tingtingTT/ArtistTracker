@@ -134,7 +134,7 @@ public class album_activity extends AppCompatActivity {
                                     albumDate.set(Calendar.DAY_OF_MONTH, Integer.parseInt(day));
                                     Calendar today = Calendar.getInstance();
                                     if (albumDate.after(today)) {
-                                        saved_album_names.add(album_name + " -" + lines[1]);
+                                        saved_album_names.add(artist_name + ": " + album_name + " -" + lines[1]);
                                     }
 
                                 } else if(splitDate.length == 2){ //case where just year is shown..we will accept for now
@@ -143,7 +143,7 @@ public class album_activity extends AppCompatActivity {
                                     int now_year = now.get(Calendar.YEAR); ;
 
                                     if(Integer.parseInt(year) >= now_year){
-                                        saved_album_names.add(album_name + " - " + year);
+                                        saved_album_names.add(artist_name + ": " + album_name + " - " + year);
                                     }
                                 }
                             } else { // not full date given - still a new album according to google
@@ -151,7 +151,7 @@ public class album_activity extends AppCompatActivity {
                                 if(lines.length > 1) { //a result is shown
 
                                 }
-                                saved_album_names.add(album_name + " - " + year);
+                                saved_album_names.add(artist_name+ ": " + album_name + " - " + year);
                             }
                         }
 
