@@ -1,5 +1,6 @@
 package com.mike.artisttracker;
 
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.AsyncTask;
@@ -142,10 +143,6 @@ public class concert_activity extends AppCompatActivity {
         concert_list_view =(ListView)findViewById(R.id.concert_list);
         concertEvents.clear();
 
-        ImageView background = findViewById(R.id.concert_background);
-        Bitmap background_bmp = blur_bitmap.blur_image(this, BitmapFactory.decodeResource(getResources(), R.drawable.concert));
-        background.setImageBitmap(background_bmp);
-
         // Loop through each artist in savedArtist and call concertAsync to make API call
         for (saved_artist artist : savedArtists) {
             Caller.getInstance().setCache(null);
@@ -206,6 +203,12 @@ public class concert_activity extends AppCompatActivity {
             setData(jraw);
         }
     }
+    @Override
+    public void onBackPressed() {
+        Intent it = new Intent(this, main_activity.class);
+        it.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        startActivity(it);
+        finish();}
 }
 
 
@@ -266,4 +269,6 @@ class Concert {
     public void setCountry(String country) {
         this.country = country;
     }
+
+
 }
