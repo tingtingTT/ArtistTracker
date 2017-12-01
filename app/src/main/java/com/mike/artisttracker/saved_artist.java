@@ -74,6 +74,7 @@ public class saved_artist implements Serializable{
     public String getUpcomingAlbum(){
         //to be figured out
         //this is for Albums that haven't came out yet
+
         return upcomingAlbum;
     }
 
@@ -85,6 +86,7 @@ public class saved_artist implements Serializable{
         for (saved_artist artists : savedArtists) {
             if(artists.getArtistMBID().equals(specificArtist.getArtistMBID())){
                 artists.top_albums = null; // to fix - java.util.ConcurrentModificationException
+                artists.upcomingAlbum = null;
                 savedArtists.remove(artists);
                 break;
             }
@@ -130,6 +132,19 @@ public class saved_artist implements Serializable{
 
         StrictMode.setThreadPolicy(policy);
         top_albums = getTopAlbums(name,api_key);
+        upcomingAlbum = "";
+        int i = 0;
+        for(Album albums : top_albums){
+            if (i == 7){
+                break;
+            }
+            if(!(albums.getName().equals("(null)")) || albums.getName() != null) {
+                upcomingAlbum += albums.getName() + "\n";
+                i++;
+            }
+        }
+
+
         return top_albums;
     }
 
