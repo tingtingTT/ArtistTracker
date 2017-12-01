@@ -16,8 +16,8 @@ public class user_account implements Serializable{
     public static String current_password;
 
 
-    private String user_name;
-    private String password;
+    public String user_name;
+    public String password;
     private Collection<saved_artist> saved_Artists = new ArrayList<saved_artist>();
 
 
@@ -29,10 +29,10 @@ public class user_account implements Serializable{
 
 
     public String getUser_name() {
-        return user_name;
+        return this.user_name;
     }
     public String getPassword() {
-        return password;
+        return this.password;
     }
     public static String getCurrent_username() {
         return current_username;
@@ -49,9 +49,8 @@ public class user_account implements Serializable{
         for (user_account user : saved_Accounts) {
             if(user.getUser_name().equals(user_entered) && user.getPassword().equals(pass_entered)) {
                 alread_saved = true;
-
-                current_username = user.getUser_name();
-                current_password = user.getPassword();
+                current_username = user_entered;
+                current_password = pass_entered;
                 saved_artist.savedArtists = user.getSaved_Artists();
             }
         }
@@ -67,6 +66,7 @@ public class user_account implements Serializable{
         }
         else{
             for (user_account user : saved_Accounts) {
+                // Checks if user name is already in use
                 if(user.getUser_name().equals(user_entered) ) {
                     return valid_username;
                 }

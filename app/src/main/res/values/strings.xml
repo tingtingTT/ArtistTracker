@@ -4,7 +4,8 @@
     <string name="action_settings">Settings</string>
     <string name="concert">Concert</string>
     <string name="album">Album</string>
-    <string name="saved_artist">Saved artists</string>
+    <string name="saved_artist">Saved Artists</string>
+    <string name="social_board">Social Board</string>
     <string name="search_artist_hint">Search artists</string>
     <string name="saved_artist_confirm">Search this artist</string>
     <string name="dummy_text_1">Upcoming albums</string>

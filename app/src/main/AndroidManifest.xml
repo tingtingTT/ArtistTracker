@@ -26,23 +26,34 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".main_activity"
-            android:theme="@style/AppTheme.NoActionBar"
-            android:noHistory="true"/>
-        <activity android:name=".album_activity"
-            android:theme="@style/AppTheme.NoActionBar"
-            android:noHistory="true"/>
-        <activity android:name=".concert_activity"
-            android:theme="@style/AppTheme.NoActionBar"
-            android:noHistory="true"/>
-        <activity android:name=".artist_list_activity"
-            android:theme="@style/AppTheme.NoActionBar"
-            android:noHistory="true"/>
-        <activity android:name=".artist_search_activity"
-            android:theme="@style/AppTheme.NoActionBar"
-            android:noHistory="true"/>
-        <activity android:name=".individual_artist_activity"
-            android:theme="@style/AppTheme.NoActionBar"
-            android:noHistory="true"/>
+        <activity
+            android:name=".main_activity"
+            android:noHistory="true"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".album_activity"
+            android:noHistory="true"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".concert_activity"
+            android:noHistory="true"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".artist_list_activity"
+            android:noHistory="true"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".artist_search_activity"
+            android:noHistory="true"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".individual_artist_activity"
+            android:noHistory="true"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".social_board_activity"
+            android:noHistory="true"
+            android:theme="@style/AppTheme.NoActionBar"/>
     </application>
+
 </manifest>
