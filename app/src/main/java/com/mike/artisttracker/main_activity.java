@@ -117,7 +117,6 @@ public class main_activity extends AppCompatActivity implements View.OnClickList
 
             // user clicks social board button
             case R.id.social_board_button:
-                user_account.reset();
                 Intent social_board_intent = new Intent(main_activity.this, social_board_activity.class);
                 startActivity(social_board_intent);
                 break;

@@ -16,8 +16,8 @@ public class user_account implements Serializable{
     public static String current_password;
 
 
-    public String user_name;
-    public String password;
+    private String user_name;
+    private String password;
     private Collection<saved_artist> saved_Artists = new ArrayList<saved_artist>();
 
 

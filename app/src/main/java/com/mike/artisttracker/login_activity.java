@@ -37,7 +37,6 @@ public class login_activity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-               // if(user_Name.getText().toString().equals("") || password.getText().toString() == null){
                 if(( user_Name.getText().toString().length() != 0) && ( password.getText().toString().length() != 0) ){
                     // Load all user accounts
                     grabAccountsFromFile();
@@ -96,8 +95,8 @@ public class login_activity extends AppCompatActivity {
     private void loadSocialBoard() {
         try{
 
-            String file_name = "SocialPost.txt";
-            FileInputStream inputStream = openFileInput("SocialPost.txt");
+            String file_name = "SocialPosts.txt";
+            FileInputStream inputStream = openFileInput("SocialPosts.txt");
             ObjectInputStream objStream = new ObjectInputStream(inputStream);
             social_post.saved_posts = (ArrayList<social_post>) objStream.readObject();
             inputStream.close();

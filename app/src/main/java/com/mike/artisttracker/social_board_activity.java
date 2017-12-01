@@ -35,7 +35,7 @@ public class social_board_activity extends AppCompatActivity {
         post_list_view = (ListView)findViewById(R.id.posted_messages_listView);
 
         for(social_post post: saved_posts){
-            posts_list.add(" " + post.getAuthor() +'\t'+ post.getPost_time() +'\n'+ post.getMessage());
+            posts_list.add(post.getMessage() +'\n' + "~" + post.getAuthor() + "  " + post.getPost_time() );
         }
         adapter = new ArrayAdapter<String>(this,android.R.layout.simple_expandable_list_item_1,posts_list);
         post_list_view.setAdapter(adapter);
@@ -46,23 +46,18 @@ public class social_board_activity extends AppCompatActivity {
         post_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                // todo: fix time format
                 TimeZone.setDefault(TimeZone.getTimeZone("PST"));
                 Date date = new Date();
 
                 String post_date = date.toString();
                 String new_post = post_edit_text.getText().toString();
-                String author = user_account.current_username;
-
-                if (user_account.current_username == null){
-                    Toast.makeText(getBaseContext(), "Current username is null: " , Toast.LENGTH_SHORT).show();
-                    Toast.makeText(getBaseContext(), "Current getCurrent_user: " + user_account.getCurrent_username(), Toast.LENGTH_LONG).show();
-                    Toast.makeText(getBaseContext(), "Current username: " + user_account.current_username, Toast.LENGTH_LONG).show();
-                }
+                String author = user_account.getCurrent_username();
 
                 social_post.addPost(new_post,author,post_date);
                 saveAccountsToFile();
 
-                posts_list.add(author +'\t'+ post_date +'\n'+ new_post);
+                posts_list.add(new_post +'\n'+ "~" + author +"  "+ post_date);
 
                 post_edit_text.setText("");
                 // hide heyboard
@@ -82,7 +77,7 @@ public class social_board_activity extends AppCompatActivity {
     // This method will save posts to file
     public void saveAccountsToFile(){
         try {
-            FileOutputStream os = openFileOutput("SocialPost.txt", MODE_PRIVATE);
+            FileOutputStream os = openFileOutput("SocialPosts.txt", MODE_PRIVATE);
             ObjectOutputStream output = new ObjectOutputStream(os);
             output.writeObject(social_post.saved_posts);
             output.close();
