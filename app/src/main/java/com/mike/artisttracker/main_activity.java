@@ -36,6 +36,7 @@ public class main_activity extends AppCompatActivity implements View.OnClickList
     public Button concert_button;
     public Button album_button;
     public Button saved_artist_button;
+    public Button social_board_button;
     public FloatingActionButton search_artist_float_button;
     public FloatingActionButton logout_button;
 
@@ -43,13 +44,13 @@ public class main_activity extends AppCompatActivity implements View.OnClickList
     public void init_layout()
     {
 
-
         // set all buttons by ids
         concert_button = findViewById(R.id.concert_button);
         album_button = findViewById(R.id.album_button);
         saved_artist_button = findViewById(R.id.saved_artist_button);
         search_artist_float_button = findViewById(R.id.search_artist_float_button);
         logout_button = findViewById(R.id.logout_button);
+        social_board_button = findViewById(R.id.social_board_button);
 
         // making these buttons listening/ready to be clicked
         concert_button.setOnClickListener(this);
@@ -57,6 +58,7 @@ public class main_activity extends AppCompatActivity implements View.OnClickList
         saved_artist_button.setOnClickListener(this);
         search_artist_float_button.setOnClickListener(this);
         logout_button.setOnClickListener(this);
+        social_board_button.setOnClickListener(this);
     }
 
 
@@ -112,6 +114,13 @@ public class main_activity extends AppCompatActivity implements View.OnClickList
                 Intent logout_intent = new Intent(main_activity.this, login_activity.class);
                 startActivity(logout_intent);
                 break;
+
+            // user clicks social board button
+            case R.id.social_board_button:
+                Intent social_board_intent = new Intent(main_activity.this, social_board_activity.class);
+                startActivity(social_board_intent);
+                break;
+
         }
     }
 

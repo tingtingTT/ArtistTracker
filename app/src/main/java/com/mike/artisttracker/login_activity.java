@@ -37,7 +37,6 @@ public class login_activity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-               // if(user_Name.getText().toString().equals("") || password.getText().toString() == null){
                 if(( user_Name.getText().toString().length() != 0) && ( password.getText().toString().length() != 0) ){
                     // Load all user accounts
                     grabAccountsFromFile();
@@ -68,6 +67,7 @@ public class login_activity extends AppCompatActivity {
     private void validate(String user, String pass){
         // login_user will return true if user name and pass were a match to an account
         if(user_account.login_user(user,pass)){
+            loadSocialBoard();
             // login was succesfull so launch app
             launchMain();
         }
@@ -81,12 +81,29 @@ public class login_activity extends AppCompatActivity {
         // login_new_user will return true if User name is available and account is created
         if(user_account.login_new_user(user,pass)){
             Toast.makeText(getBaseContext(), "User name is valid, account created" , Toast.LENGTH_SHORT).show();
+            loadSocialBoard();
             // login was succesfull so launch app
             saveAccountsToFile();
             launchMain();
         }
         else{
             Toast.makeText(getBaseContext(), "Username isn't available" , Toast.LENGTH_SHORT).show();
+        }
+
+    }
+
+    private void loadSocialBoard() {
+        try{
+
+            String file_name = "SocialPosts.txt";
+            FileInputStream inputStream = openFileInput("SocialPosts.txt");
+            ObjectInputStream objStream = new ObjectInputStream(inputStream);
+            social_post.saved_posts = (ArrayList<social_post>) objStream.readObject();
+            inputStream.close();
+        }
+        catch (Exception e) {
+            e.printStackTrace();
+            Toast.makeText(getBaseContext(), "Grabbing social board failed" , Toast.LENGTH_SHORT).show();
         }
 
     }
@@ -100,7 +117,8 @@ public class login_activity extends AppCompatActivity {
             ObjectInputStream objStream = new ObjectInputStream(inputStream);
             user_account.saved_Accounts = (ArrayList<user_account>) objStream.readObject();
             inputStream.close();
-        } catch (Exception e) {
+        }
+        catch (Exception e) {
             e.printStackTrace();
             Toast.makeText(getBaseContext(), "Grabbing account failed" , Toast.LENGTH_SHORT).show();
         }
