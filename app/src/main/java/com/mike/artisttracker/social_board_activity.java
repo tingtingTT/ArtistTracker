@@ -70,7 +70,7 @@ public class social_board_activity extends AppCompatActivity {
                 social_post.addPost(new_post,author,post_date);
                 saveAccountsToFile();
 
-                posts_list.add(new_post +'\n'+ "~" + author +"  "+ post_date);
+                posts_list.add(0, new_post +'\n'+ "~" + author +"  "+ post_date);
 
                 post_edit_text.setText("");
                 // hide heyboard
