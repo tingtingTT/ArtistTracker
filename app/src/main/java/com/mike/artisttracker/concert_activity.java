@@ -29,6 +29,8 @@ public class concert_activity extends AppCompatActivity {
     ArrayAdapter<String> adapter;
     ArrayList<String> concertEvents;
     ListView concert_list_view;
+    double lati =  37.338208;
+    double longi = -121.886329;
 
     private void setData(StringBuilder data){
 
@@ -48,6 +50,7 @@ public class concert_activity extends AppCompatActivity {
 
                 // Sets ArrayList item to Artist name
                 concertEvents.add(artistname);
+                concertEvents.add("\n");
 
                 // Loops through each concert in jsonEvents
                 for (int i = 0; i < jsonEvents.length(); i++) {
@@ -80,16 +83,21 @@ public class concert_activity extends AppCompatActivity {
                         String cityString = city.getString("name");
                         String countryString = country.getString("name");
 
-                        String latitude = locationData.getString("latitude");
-                        String longitude = locationData.getString("longitude");
+                        double latitude = Double.parseDouble(locationData.getString("latitude"));
+                        double longitude = Double.parseDouble(locationData.getString("longitude"));
 
-                        concertEvents.add("Concert " + (i + 1));
-                        concertEvents.add(venueName);
-                        concertEvents.add(cityString);
-                        concertEvents.add(countryString);
-                        concertEvents.add(localDate);
-                        concertEvents.add(localTime);
-                        concertEvents.add(" ");
+
+
+                        double dist = distance(latitude, longitude, lati, longi);
+
+                        if ( dist < 500 ) {
+                            concertEvents.add(venueName);
+                            concertEvents.add(cityString);
+                            concertEvents.add(countryString);
+                            concertEvents.add(localDate);
+                            concertEvents.add(localTime);
+                            concertEvents.add(" ");
+                        }
 
 //                        String compile = venueName + " " + cityString + " " +  countryString + " " +  localDate + " " +  localTime + "\n";
 //                        concertEvents.add(compile);
