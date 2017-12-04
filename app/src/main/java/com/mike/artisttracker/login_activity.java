@@ -33,30 +33,37 @@ public class login_activity extends AppCompatActivity {
         login = (Button)findViewById(R.id.login_button);
         create_account = (Button)findViewById(R.id.create_account_button);
 
+        LoadLoginStateToFile();
+        grabAccountsFromFile();
+
+        if (login_state.last_user!= null && login_state.last_user.getIs_logged_in() == true){
+            validate(login_state.last_user.getLast_logged_in_username(), login_state.last_user.getLast_logged_in_password());
+            Toast.makeText(getBaseContext(), "Welcome back: '"+ user_account.getCurrent_username() + "'", Toast.LENGTH_LONG).show();
+            // login was succesfull so launch app
+            launchMain();
+        }
+
         login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
                 if(( user_Name.getText().toString().length() != 0) && ( password.getText().toString().length() != 0) ){
                     // Load all user accounts
-                    grabAccountsFromFile();
                     validate(user_Name.getText().toString(), password.getText().toString());
                 }
                 else{
-                    Toast.makeText(getBaseContext(), "Please enter a valid username and password." , Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getBaseContext(), "Please enter a valid username and password." , Toast.LENGTH_LONG).show();
                 }
             }
         });
-
         create_account.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 if(( user_Name.getText().toString().length() != 0) && ( password.getText().toString().length() != 0) ){
-                    grabAccountsFromFile();
                     createAccount(user_Name.getText().toString(), password.getText().toString());
                 }
                 else{
-                    Toast.makeText(getBaseContext(), "Please enter a valid username and password." , Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getBaseContext(), "Please enter a valid username and password." , Toast.LENGTH_LONG).show();
                 }
 
             }
@@ -68,11 +75,13 @@ public class login_activity extends AppCompatActivity {
         // login_user will return true if user name and pass were a match to an account
         if(user_account.login_user(user,pass)){
             loadSocialBoard();
+            updateLoginState(user,pass);
+            Toast.makeText(getBaseContext(), "Logged in as: '"+ user_account.getCurrent_username() + "'", Toast.LENGTH_LONG).show();
             // login was succesfull so launch app
             launchMain();
         }
         else{
-            Toast.makeText(getBaseContext(), "Login failed. Username and password don't match an existing account." , Toast.LENGTH_SHORT).show();
+            Toast.makeText(getBaseContext(), "Login failed. Username and password don't match an existing account." , Toast.LENGTH_LONG).show();
         }
     }
 
@@ -80,15 +89,21 @@ public class login_activity extends AppCompatActivity {
     private void createAccount(String user, String pass){
         // login_new_user will return true if User name is available and account is created
         if(user_account.login_new_user(user,pass)){
-            Toast.makeText(getBaseContext(), "User name is valid, account created" , Toast.LENGTH_SHORT).show();
             loadSocialBoard();
             // login was succesfull so launch app
             saveAccountsToFile();
+            updateLoginState(user,pass);
+            Toast.makeText(getBaseContext(), "Logged in as: '"+ user_account.getCurrent_username() + "'", Toast.LENGTH_LONG).show();
             launchMain();
         }
         else{
-            Toast.makeText(getBaseContext(), "Username isn't available" , Toast.LENGTH_SHORT).show();
+            Toast.makeText(getBaseContext(), "Username isn't available" , Toast.LENGTH_LONG).show();
         }
+    }
+
+    private void updateLoginState(String user, String pass) {
+        login_state.setLast_user(user,pass,true);
+        saveLoginStateToFile();
 
     }
 
@@ -103,7 +118,7 @@ public class login_activity extends AppCompatActivity {
         }
         catch (Exception e) {
             e.printStackTrace();
-            Toast.makeText(getBaseContext(), "Grabbing social board failed" , Toast.LENGTH_SHORT).show();
+            Toast.makeText(getBaseContext(), "Grabbing social board failed" , Toast.LENGTH_LONG).show();
         }
 
     }
@@ -120,7 +135,7 @@ public class login_activity extends AppCompatActivity {
         }
         catch (Exception e) {
             e.printStackTrace();
-            Toast.makeText(getBaseContext(), "Grabbing account failed" , Toast.LENGTH_SHORT).show();
+            Toast.makeText(getBaseContext(), "Grabbing account failed" , Toast.LENGTH_LONG).show();
         }
 
     }
@@ -135,14 +150,47 @@ public class login_activity extends AppCompatActivity {
         }
         catch (java.io.IOException e) {
             //do something if an IOException occurs.
-            Toast.makeText(getBaseContext(), "Saving account failed" , Toast.LENGTH_SHORT).show();
+            Toast.makeText(getBaseContext(), "Saving account failed" , Toast.LENGTH_LONG).show();
             System.out.println("ERROR"); //temporary
         }
     }
 
+    // This method will load last login state from file
+    private void LoadLoginStateToFile() {
+        try{
+
+            String file_name = "LoginState.txt";
+            FileInputStream inputStream = openFileInput("LoginState.txt");
+            ObjectInputStream objStream = new ObjectInputStream(inputStream);
+            login_state.last_user = (login_state) objStream.readObject();
+            inputStream.close();
+        }
+        catch (Exception e) {
+            e.printStackTrace();
+            Toast.makeText(getBaseContext(), "Grabbing login state failed" , Toast.LENGTH_LONG).show();
+        }
+
+    }
+
+    // This method will save last login state from file
+    private void saveLoginStateToFile() {
+        try {
+            FileOutputStream os = openFileOutput("LoginState.txt", MODE_PRIVATE);
+            ObjectOutputStream output = new ObjectOutputStream(os);
+            output.writeObject(login_state.last_user);
+            output.close();
+        }
+        catch (java.io.IOException e) {
+            //do something if an IOException occurs.
+            Toast.makeText(getBaseContext(), "Saving login state failed" , Toast.LENGTH_LONG).show();
+            System.out.println("ERROR"); //temporary
+        }
+    }
+
+
+
     private void launchMain() {
         Intent intent = new Intent(login_activity.this, main_activity.class);
-        Toast.makeText(getBaseContext(), "Logged in as: '"+ user_account.getCurrent_username() + "'", Toast.LENGTH_SHORT).show();
         startActivity(intent);
     }
 }

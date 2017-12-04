@@ -111,6 +111,10 @@ public class main_activity extends AppCompatActivity implements View.OnClickList
             // user clicks logout button
             case R.id.logout_button:
                 user_account.reset();
+
+                login_state.setLast_user(null,null,false);
+                saveLoginStateToFile();
+
                 Intent logout_intent = new Intent(main_activity.this, login_activity.class);
                 startActivity(logout_intent);
                 break;
@@ -121,6 +125,21 @@ public class main_activity extends AppCompatActivity implements View.OnClickList
                 startActivity(social_board_intent);
                 break;
 
+        }
+    }
+
+    // This method will save last login state from file
+    private void saveLoginStateToFile() {
+        try {
+            FileOutputStream os = openFileOutput("LoginState.txt", MODE_PRIVATE);
+            ObjectOutputStream output = new ObjectOutputStream(os);
+            output.writeObject(login_state.last_user);
+            output.close();
+        }
+        catch (java.io.IOException e) {
+            //do something if an IOException occurs.
+            Toast.makeText(getBaseContext(), "Saving login state failed" , Toast.LENGTH_SHORT).show();
+            System.out.println("ERROR"); //temporary
         }
     }
 
