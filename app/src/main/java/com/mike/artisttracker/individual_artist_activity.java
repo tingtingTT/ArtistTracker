@@ -25,7 +25,7 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 
-import de.umass.lastfm.Caller;
+//import de.umass.lastfm.Caller;
 
 
 public class individual_artist_activity extends AppCompatActivity {
@@ -50,19 +50,20 @@ public class individual_artist_activity extends AppCompatActivity {
 //            sa.updateArtistTopAlbums(sa.getArtistName());  //- ADDED SOMEWHERE ELSE TO IMPROVE PERFORMANCE
 //        }
 
-        //fix caching/reloading fail problem
-        Caller.getInstance().setCache(null);
-        Caller.getInstance().setUserAgent("tst");
+//        //fix caching/reloading fail problem
+//        Caller.getInstance().setCache(null);
+//        Caller.getInstance().setUserAgent("tst");
 
         artist_name = findViewById(R.id.artist_name);
         artist_info = findViewById(R.id.artist_info);
         artist_name.setText(sa.getArtistName());
-        if (sa.getUpcomingAlbum() == null) {
-            sa.updateArtistTopAlbums(sa.getArtistName());
-        }
+//        if (sa.getUpcomingAlbum() == null) {
+//            sa.updateArtistTopAlbums(sa.getArtistName());
+//        }
         //System.out.println(sa.getUpcomingAlbum());
         //System.out.println(sa.getArtistTopAlbums());
-        artist_info.setText(sa.getArtistInfo() + "\n \n" + "Top Albums \n"  + sa.getUpcomingAlbum());
+//        artist_info.setText(sa.getArtistInfo() + "\n \n" + "Top Albums \n"  + sa.getUpcomingAlbum());
+        artist_info.setText(sa.getArtistInfo());
         artist_info.setMovementMethod(new ScrollingMovementMethod());
     }
 
