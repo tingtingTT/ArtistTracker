@@ -37,8 +37,8 @@ public class login_activity extends AppCompatActivity {
 
         if (login_state.last_user!= null && login_state.last_user.getIs_logged_in() == true){
             validate(login_state.last_user.getLast_logged_in_username(), login_state.last_user.getLast_logged_in_password());
-            Toast.makeText(getBaseContext(), "Welcome back: '"+ user_account.getCurrent_username() + "'", Toast.LENGTH_LONG).show();
-            // login was succesfull so launch app
+            Toast.makeText(getBaseContext(), "Welcome back: "+ user_account.getCurrent_username(), Toast.LENGTH_LONG).show();
+            // login was successful so launch app
             launchMain();
         }
 
