@@ -5,19 +5,10 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:background="@drawable/artist"
     tools:context="com.mike.artisttracker.individual_artist_activity"
     tools:layout_editor_absoluteX="0dp"
     tools:layout_editor_absoluteY="81dp">
-
-    <ImageView
-        android:id="@+id/individual_artist"
-        android:layout_width="wrap_content"
-        android:layout_height="680dp"
-        android:scaleType="centerCrop"
-        android:scaleX="-1"
-        app:layout_constraintBottom_toBottomOf="@+id/add"
-        app:layout_constraintStart_toStartOf="parent"
-        app:srcCompat="@drawable/artist" />
 
     <TextView
         android:id="@+id/artist_info"

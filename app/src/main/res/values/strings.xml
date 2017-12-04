@@ -2,8 +2,8 @@
     <string name="app_name"></string>
     <string name="API_KEY">44ce572665909f50a88232d35e667812</string> <!-- used for specific commands requiring api auth -->
     <string name="action_settings">Settings</string>
-    <string name="concert">Concert</string>
-    <string name="album">Album</string>
+    <string name="concert">Upcoming Concert</string>
+    <string name="album">Upcoming Album</string>
     <string name="saved_artist">Saved Artists</string>
     <string name="social_board">Social Board</string>
     <string name="search_artist_hint">Search artists</string>
