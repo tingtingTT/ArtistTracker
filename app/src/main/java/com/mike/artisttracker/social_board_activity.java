@@ -37,7 +37,9 @@ public class social_board_activity extends AppCompatActivity {
         for(social_post post: saved_posts){
             posts_list.add(post.getMessage() +'\n' + "~" + post.getAuthor() + "  " + post.getPost_time() );
         }
-        adapter = new ArrayAdapter<String>(this,android.R.layout.simple_expandable_list_item_1,posts_list);
+
+
+        adapter = new ArrayAdapter<String>(social_board_activity.this,R.layout.artist_list_detail,posts_list);
         post_list_view.setAdapter(adapter);
 
         post_edit_text = (EditText)findViewById(R.id.message_edit_text);
