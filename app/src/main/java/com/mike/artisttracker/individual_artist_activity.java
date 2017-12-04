@@ -176,7 +176,7 @@ public class individual_artist_activity extends AppCompatActivity {
         }
         catch (java.io.IOException e) {
             //do something if an IOException occurs.
-            Toast.makeText(getBaseContext(), "Saving account failed" , Toast.LENGTH_SHORT).show();
+            //Toast.makeText(getBaseContext(), "Saving account failed" , Toast.LENGTH_SHORT).show();
             System.out.println("ERROR"); //temporary
         }
     }

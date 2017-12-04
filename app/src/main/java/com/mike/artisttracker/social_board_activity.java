@@ -14,6 +14,7 @@ import android.widget.Toolbar;
 import java.io.FileOutputStream;
 import java.io.ObjectOutputStream;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.TimeZone;
 
@@ -49,10 +50,11 @@ public class social_board_activity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 // todo: fix time format
-                TimeZone.setDefault(TimeZone.getTimeZone("PST"));
-                Date date = new Date();
+//                TimeZone.setDefault(TimeZone.getTimeZone("PST"));
+                Date date = Calendar.getInstance().getTime();
 
                 String post_date = date.toString();
+
                 String new_post = post_edit_text.getText().toString();
                 String author = user_account.getCurrent_username();
 
@@ -86,7 +88,7 @@ public class social_board_activity extends AppCompatActivity {
         }
         catch (java.io.IOException e) {
             //do something if an IOException occurs.
-            Toast.makeText(getBaseContext(), "Saving social board failed" , Toast.LENGTH_SHORT).show();
+            //Toast.makeText(getBaseContext(), "Saving social board failed" , Toast.LENGTH_SHORT).show();
             System.out.println("ERROR"); //temporary
         }
     }

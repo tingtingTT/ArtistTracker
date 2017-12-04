@@ -138,8 +138,8 @@ public class main_activity extends AppCompatActivity implements View.OnClickList
         }
         catch (java.io.IOException e) {
             //do something if an IOException occurs.
-            Toast.makeText(getBaseContext(), "Saving login state failed" , Toast.LENGTH_SHORT).show();
-            System.out.println("ERROR"); //temporary
+            //Toast.makeText(getBaseContext(), "Saving login state failed" , Toast.LENGTH_SHORT).show();
+            //System.out.println("ERROR"); //temporary
         }
     }
 

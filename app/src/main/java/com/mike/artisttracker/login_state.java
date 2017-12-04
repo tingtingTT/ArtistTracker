@@ -6,6 +6,7 @@ package com.mike.artisttracker;
 
 public class login_state {
 
+    //public static login_state last_user;
     public static login_state last_user = new login_state(null,null,false);
 
 
@@ -38,10 +39,10 @@ public class login_state {
         this.is_logged_in = is_logged_in;
     }
 
-    public static void setLast_user(String last_logged_in_username, String last_logged_in_password, Boolean is_logged_in) {
-        login_state.last_user.setLast_logged_in_username(last_logged_in_username);
-        login_state.last_user.setLast_logged_in_password(last_logged_in_password);
-        login_state.last_user.setIs_logged_in(is_logged_in);
+    public static void setLast_user(String username, String pass, Boolean logged_in) {
+        login_state.last_user.last_logged_in_username = username;
+        login_state.last_user.last_logged_in_password = pass;
+        login_state.last_user.is_logged_in = logged_in;
 
     }
 }

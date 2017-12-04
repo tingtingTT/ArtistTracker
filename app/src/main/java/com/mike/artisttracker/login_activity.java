@@ -34,7 +34,6 @@ public class login_activity extends AppCompatActivity {
         create_account = (Button)findViewById(R.id.create_account_button);
 
         LoadLoginStateToFile();
-        grabAccountsFromFile();
 
         if (login_state.last_user!= null && login_state.last_user.getIs_logged_in() == true){
             validate(login_state.last_user.getLast_logged_in_username(), login_state.last_user.getLast_logged_in_password());
@@ -49,6 +48,7 @@ public class login_activity extends AppCompatActivity {
 
                 if(( user_Name.getText().toString().length() != 0) && ( password.getText().toString().length() != 0) ){
                     // Load all user accounts
+                    grabAccountsFromFile();
                     validate(user_Name.getText().toString(), password.getText().toString());
                 }
                 else{
@@ -60,6 +60,7 @@ public class login_activity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 if(( user_Name.getText().toString().length() != 0) && ( password.getText().toString().length() != 0) ){
+                    grabAccountsFromFile();
                     createAccount(user_Name.getText().toString(), password.getText().toString());
                 }
                 else{
@@ -75,8 +76,8 @@ public class login_activity extends AppCompatActivity {
         // login_user will return true if user name and pass were a match to an account
         if(user_account.login_user(user,pass)){
             loadSocialBoard();
-            updateLoginState(user,pass);
-            Toast.makeText(getBaseContext(), "Logged in as: '"+ user_account.getCurrent_username() + "'", Toast.LENGTH_LONG).show();
+             updateLoginState(user,pass);
+            //Toast.makeText(getBaseContext(), "Logged in as: '"+ user_account.getCurrent_username() + "'", Toast.LENGTH_LONG).show();
             // login was succesfull so launch app
             launchMain();
         }
@@ -93,7 +94,7 @@ public class login_activity extends AppCompatActivity {
             // login was succesfull so launch app
             saveAccountsToFile();
             updateLoginState(user,pass);
-            Toast.makeText(getBaseContext(), "Logged in as: '"+ user_account.getCurrent_username() + "'", Toast.LENGTH_LONG).show();
+            //Toast.makeText(getBaseContext(), "Logged in as: '"+ user_account.getCurrent_username() + "'", Toast.LENGTH_LONG).show();
             launchMain();
         }
         else{
@@ -102,7 +103,11 @@ public class login_activity extends AppCompatActivity {
     }
 
     private void updateLoginState(String user, String pass) {
+        //System.out.println(">>>>>> In update <<<<<<<<");
+        //System.out.println("Before setLast_user: " + login_state.last_user.getIs_logged_in().booleanValue());
+
         login_state.setLast_user(user,pass,true);
+        //System.out.println("After setLast_user: " + login_state.last_user.getIs_logged_in().booleanValue());
         saveLoginStateToFile();
 
     }
@@ -118,7 +123,7 @@ public class login_activity extends AppCompatActivity {
         }
         catch (Exception e) {
             e.printStackTrace();
-            Toast.makeText(getBaseContext(), "Grabbing social board failed" , Toast.LENGTH_LONG).show();
+            // Toast.makeText(getBaseContext(), "Grabbing social board failed" , Toast.LENGTH_LONG).show();
         }
 
     }
@@ -135,7 +140,7 @@ public class login_activity extends AppCompatActivity {
         }
         catch (Exception e) {
             e.printStackTrace();
-            Toast.makeText(getBaseContext(), "Grabbing account failed" , Toast.LENGTH_LONG).show();
+            //Toast.makeText(getBaseContext(), "Grabbing account failed" , Toast.LENGTH_LONG).show();
         }
 
     }
@@ -150,7 +155,7 @@ public class login_activity extends AppCompatActivity {
         }
         catch (java.io.IOException e) {
             //do something if an IOException occurs.
-            Toast.makeText(getBaseContext(), "Saving account failed" , Toast.LENGTH_LONG).show();
+            //Toast.makeText(getBaseContext(), "Saving account failed" , Toast.LENGTH_LONG).show();
             System.out.println("ERROR"); //temporary
         }
     }
@@ -167,7 +172,7 @@ public class login_activity extends AppCompatActivity {
         }
         catch (Exception e) {
             e.printStackTrace();
-            Toast.makeText(getBaseContext(), "Grabbing login state failed" , Toast.LENGTH_LONG).show();
+            //Toast.makeText(getBaseContext(), "Grabbing login state failed" , Toast.LENGTH_LONG).show();
         }
 
     }
@@ -182,7 +187,7 @@ public class login_activity extends AppCompatActivity {
         }
         catch (java.io.IOException e) {
             //do something if an IOException occurs.
-            Toast.makeText(getBaseContext(), "Saving login state failed" , Toast.LENGTH_LONG).show();
+            //Toast.makeText(getBaseContext(), "Saving login state failed" , Toast.LENGTH_LONG).show();
             System.out.println("ERROR"); //temporary
         }
     }
