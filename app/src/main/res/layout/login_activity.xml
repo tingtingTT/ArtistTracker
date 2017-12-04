@@ -32,6 +32,7 @@
         android:inputType="textPassword"
         android:textColor="#FFFF00"
         android:textColorHint="#FFFF00"
+        android:singleLine="true"
         app:layout_constraintStart_toStartOf="@+id/username_edit_text"
         app:layout_constraintTop_toBottomOf="@+id/username_edit_text" />
 

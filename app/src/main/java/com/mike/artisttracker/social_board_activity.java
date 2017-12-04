@@ -1,9 +1,11 @@
 package com.mike.artisttracker;
 
+import android.content.Context;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
@@ -49,6 +51,13 @@ public class social_board_activity extends AppCompatActivity {
         post_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
+
+                InputMethodManager inputManager = (InputMethodManager)
+                        getSystemService(Context.INPUT_METHOD_SERVICE);
+
+                inputManager.hideSoftInputFromWindow(getCurrentFocus().getWindowToken(),
+                        InputMethodManager.HIDE_NOT_ALWAYS);
                 // todo: fix time format
 //                TimeZone.setDefault(TimeZone.getTimeZone("PST"));
                 Date date = Calendar.getInstance().getTime();
