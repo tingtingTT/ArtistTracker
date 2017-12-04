@@ -38,9 +38,9 @@ public class individual_artist_activity extends AppCompatActivity {
     public void init_layout(saved_artist sa) {
 
         artistImage = findViewById(R.id.artist_image);
-        ImageView background = findViewById(R.id.individual_artist);
-        Bitmap background_bmp = blur_bitmap.blur_image(this, BitmapFactory.decodeResource(getResources(), R.drawable.artist));
-        background.setImageBitmap(background_bmp);
+//        ImageView background = findViewById(R.id.individual_artist);
+//        Bitmap background_bmp = blur_bitmap.blur_image(this, BitmapFactory.decodeResource(getResources(), R.drawable.artist));
+//        background.setImageBitmap(background_bmp);
 
 //        StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
 //        StrictMode.setThreadPolicy(policy);
