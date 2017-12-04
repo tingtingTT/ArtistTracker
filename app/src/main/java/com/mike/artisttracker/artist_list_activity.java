@@ -42,7 +42,7 @@ public class artist_list_activity extends AppCompatActivity {
         artist_list_view.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                Toast.makeText(getBaseContext(), "Selected: "+ saved_artist_names.get(i), Toast.LENGTH_SHORT).show();
+//                Toast.makeText(getBaseContext(), "Selected: "+ saved_artist_names.get(i), Toast.LENGTH_SHORT).show();
 
                 // todo make saved_artist grabbing more efficient
                 saved_artist selected_artist = (saved_artist) savedArtists.toArray()[i];
