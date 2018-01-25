@@ -1,6 +1,6 @@
 # README #
 
-Download Android Studio and run it on any emulator 
+Download Android Studio and run it on any emulator or run it on Android device
 
 ### What is this repository for? ###
 Team program for CMPS121 Mobile App class
